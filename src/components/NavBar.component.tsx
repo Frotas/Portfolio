@@ -1,6 +1,4 @@
-
-
-import NavLink from '@app/components/NavLink.component'
+import NavLink from "@app/components/NavLink.component";
 
 type props = {
   device: 'mobile' | 'tablet' |'desktop',
