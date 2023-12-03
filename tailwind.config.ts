@@ -6,6 +6,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: ['class', 'data-theme="dark"'],
   theme: {
     extend: {
       colors: {
@@ -17,6 +18,16 @@ const config: Config = {
         TrappedDarkness: '#081526',
       },
     },
+    screens: {
+      'sm': {'min': '320px'},
+      'md': {'min': '744px'},
+      'lg': {'min': '1280px'},
+
+      'mobile': {'min': '320px', 'max': '744px'},
+      'tablet': {'min': '744px', 'max': '1280px'},
+      'desktop': {'min': '1280px'},
+    },
+
   },
   plugins: [],
 }
