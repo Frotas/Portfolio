@@ -1,7 +1,8 @@
 'use client'
+import { HTMLAttributes, ReactNode } from 'react'
+
 import CN from '@app/helpers/ClassHelper';
 
-import { HTMLAttributes, ReactNode } from 'react'
 
 type MenuToggle = {
   className?: string,
@@ -9,7 +10,7 @@ type MenuToggle = {
 } & HTMLAttributes<HTMLButtonElement>;
 
 export default function MenuToggle({className, children, ...props} : MenuToggle) {
-  const defaultStyle = '';
+  const defaultStyle = 'bg-white p-2 rounded-lg text-center';
   return <>
     <button
       {...props}
