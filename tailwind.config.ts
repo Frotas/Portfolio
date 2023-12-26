@@ -1,20 +1,38 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        Black: "#000",
+        White: "#fff",
+        Cyprus: "#0A192F",
+        RockBlue: "#95A3BF",
+        DeepDarkBlue: "#242938",
+        DarkSlateGray: "#1E5359",
+        TrappedDarkness: "#081526",
       },
     },
+    screens: {
+      sm: { min: "320px" },
+      md: { min: "744px" },
+      lg: { min: "1280px" },
+
+      mobile: { min: "320px", max: "744px" },
+      tablet: { min: "744px", max: "1280px" },
+      desktop: { min: "1280px" },
+    },
   },
-  plugins: [],
-}
-export default config
+  plugins: [
+    require("./src/plugin/OrphansUtility.plugin"),
+    require("./src/plugin/TextWrapUtility.plugin"),
+    require("./src/plugin/WordBreak.plugin"),
+  ],
+};
+export default config;
