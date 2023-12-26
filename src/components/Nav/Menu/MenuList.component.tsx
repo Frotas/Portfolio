@@ -1,29 +1,21 @@
-import { HTMLAttributes, ReactNode } from "react";
-
-import CN from "@app/helpers/ClassHelper";
+import CN from '@app/helpers/ClassHelper';
+import { HTMLAttributes, ReactNode } from 'react';
 
 type MenuListProps = {
-  className?: string;
-  children?: ReactNode;
+  className?: string,
+  children?: ReactNode,
 } & HTMLAttributes<HTMLUListElement>;
 
-export default function MenuList({
-  className,
-  children,
-  ...props
-}: MenuListProps) {
-  const menuListStyle = `
-    block absolute w-full
-    top-[70px] right-0
-    bg-DarkSlateGray
-    transition-[visibility] duration-[0.6s] ease-in-out
-    overflow-y-hidden
-    sm:invisible z-50
-  `;
+export default function MenuList({className, children, ...props}: MenuListProps) {
+  const defaultStyle: string = 'w-full flex flex-col gap-4 md:flex-row md:gap-2';
 
   return (
-    <ul {...props} className={CN(menuListStyle, className)}>
+    <ul 
+      {...props}
+      className={CN(defaultStyle, className)
+    }>
       {children}
     </ul>
   );
+
 }

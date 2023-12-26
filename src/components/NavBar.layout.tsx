@@ -1,88 +1,78 @@
-"use client";
+'use client'
 
-import {
-  ButtonHTMLAttributes,
-  EventHandler,
-  MouseEventHandler,
-  TouchEventHandler,
-  useState,
-} from "react";
-import { MdClose, MdMenu } from "react-icons/md";
+import { useState } from 'react';
+import { MdClose, MdMenu } from 'react-icons/md';
 
-import Navigation from "@app/components/Nav";
-import Menu from "@app/components/Nav/Menu";
+import Navigation from '@app/components/Nav';
+import Menu from '@app/components/Nav/Menu';
+import Button from '@app/components/Button'
 
 export default function NavBar() {
   const [isOpen, setOpen] = useState(false);
-
-  function toggleMenu(event?: TouchEvent | MouseEvent | undefined): void {
-    if (event?.type === "touchstart") event?.preventDefault();
+  const toggleMenu = () => {
     setOpen(!isOpen);
-    const menuRoot = document.getElementById("menuRoot");
-    const btn = document.querySelector("#ToggleMenu");
-    btn?.setAttribute("aria-expanded", `${!btn.getAttribute("aria-expanded")}`);
-    menuRoot?.classList.toggle("active");
   }
-  const menuStyle = {
-    transition: `
-      transition-all
-      ease-in-out
-      duration-300
-    `,
-    nav: `
-      w-full
-      dark:bg-Cyprus
-      bg-DarkSlateGray
-    `,
-    menuRoot: `flex flex-row items-center justify-center hidden`,
-    menuList: ` 
-    `,
-    toggleButton: `md:hidden md:invisible`,
-  };
   return (
-    <Navigation.Root className={`${menuStyle.nav} ${menuStyle.transition}`}>
-      <Navigation.Logo
-        src=""
-        alt="Logo"
-        width={64}
-        height={64}
-        className={`${menuStyle.transition}`}
-      />
-      <Menu.Toggle onClick={toggleMenu} onTouchStart={toggleMenu}>
-        - - -
-      </Menu.Toggle>
-      <Menu.Root id="menuRoot" className={menuStyle.menuRoot}>
-        <Menu.List id="menuList" className={menuStyle.menuList}>
-          <Menu.Item
-            className={menuStyle.transition}
-            variant="plain"
-            color="RockBlue"
-          >
-            <Menu.Link href="#">Sobre</Menu.Link>
-          </Menu.Item>
-          <Menu.Item
-            className={menuStyle.transition}
-            variant="plain"
-            color="RockBlue"
-          >
-            <Menu.Link href="#">Habilidades</Menu.Link>
-          </Menu.Item>
-          <Menu.Item
-            className={menuStyle.transition}
-            variant="plain"
-            color="RockBlue"
-          >
-            <Menu.Link href="#">Projetos</Menu.Link>
-          </Menu.Item>
-          <Menu.Item
-            className={menuStyle.transition}
-            variant="filled"
-            color="RockBlue"
-          >
-            <Menu.Link href="#">Solicitar Orçamento</Menu.Link>
-          </Menu.Item>
+    <Navigation.Root className={
+      `bg-Cyprus md:flex md:flex-row md:justify-center md:items-center md:px-8 md:py-4
+        ${!isOpen ? 'grid-rows-1' : 'grid-rows-[2_minmax(0, 1fr)]'}`
+    }>
+      <Navigation.Logo src='' alt='Logo' width={64} height={64} />
+      <div className='flex justify-end'>
+        <Button.Toggle
+          type='button'
+          className={
+            `transition duration-900 ease-in-out
+            rounded-md p-2
+            focus:outline-none focus:bg-DarkSlateGray/30
+            md:hidden md:invisible`
+          }
+          onClick={toggleMenu}
+          aria-label='Menu'
+          aria-expanded='false'
+        >
+          {isOpen ?
+            (<MdClose className='text-DarkSlateGray' />)
+            : (<MdMenu className='text-DarkSlateGray' />)}
+        </Button.Toggle>
+      </div>
+      <Menu.Root
+        className='hidden invisible md:visible md:block'>
+        <Menu.List id='menu' className='md:flex md:justify-end md:items-center'>
+          <Menu.Link className='transition duration-900 ease-in-out no-underline hover:bg-slate-600/30 md:w-[15%] md:flex md:justify-center md:items-center' variant='plain' color='RockBlue'>
+            Sobre
+          </Menu.Link>
+          <Menu.Link className='transition duration-900 ease-in-out no-underline hover:bg-slate-600/30 md:w-[15%] md:flex md:justify-center md:items-center' variant='plain' color='RockBlue'>
+            Habilidades
+          </Menu.Link>
+          <Menu.Link className='transition duration-900 ease-in-out no-underline hover:bg-slate-600/30 md:w-[15%] md:flex md:justify-center md:items-center' variant='plain' color='RockBlue'>
+            Projetos
+          </Menu.Link>
+          <Menu.Link className='transition duration-900 ease-in-out md:w-[15%] md:flex md:justify-center md:items-center' variant='btnFilled' color='RockBlue'>
+            Solicitar Orçamento
+          </Menu.Link>
         </Menu.List>
       </Menu.Root>
+      {isOpen && (
+        <Menu.Root className={`md:hidden md:invisible col-span-2`}>
+          <Menu.List id='menu' className='justify-center items-center py-8'>
+            <Menu.Link className='transition duration-900 ease-in-out w-[50%] no-underline hover:bg-slate-600/30' variant='plain' color='RockBlue'>
+              Sobre
+            </Menu.Link>
+            <Menu.Link className='transition duration-900 ease-in-out w-[50%] no-underline hover:bg-slate-600/30' variant='plain' color='RockBlue'>
+              Habilidades
+            </Menu.Link>
+            <Menu.Link className='transition duration-900 ease-in-out w-[50%] no-underline hover:bg-slate-600/30' variant='plain' color='RockBlue'>
+              Projetos
+            </Menu.Link>
+            <div className='pt-8 w-[70%]'>
+              <Menu.Link className='transition duration-900 ease-in-out ' variant='btnFilled' color='RockBlue'>
+                Solicitação de Orçamento
+              </Menu.Link>
+            </div>
+          </Menu.List>
+        </Menu.Root>
+      )}
     </Navigation.Root>
-  );
+  )
 }

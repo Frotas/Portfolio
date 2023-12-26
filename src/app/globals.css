@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body {
+  @apply w-screen;
+}
+
+body {
+  @apply
+    bg-Cyprus
+    text-RockBlue;
+}
+
+svg {
+  width: 2rem;
+  height: 2rem;
+}
+
