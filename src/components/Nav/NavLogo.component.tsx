@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import CN from '@app/helpers/ClassHelper';
 
+
 type NavLogoProps = {
   className?: string,
   width?: number,

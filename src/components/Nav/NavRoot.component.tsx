@@ -1,20 +1,22 @@
 import { ReactNode } from 'react';
 import CN from '@app/helpers/ClassHelper';
 
+
 type NavBarProps = {
   className?: string,
   children: ReactNode
 };
 
 export default function NavRoot( { className, children } : NavBarProps ) {
-  const defaultStyle = `
-    w-full
-    grid grid-cols-2 grid-rows-2
+  const headerStyle = `
+    w-screen
+    flex flex-wrap
     justify-between items-center
-    px-4 py-2
+    md:justify-center md:flex-nowrap
+    px-4 py-2 md:px-8 md:py-4
   `;
   return (
-    <header className={CN(defaultStyle, className)}>
+    <header className={`${CN(headerStyle, className)}`}>
       {children}
     </header>
   )
