@@ -14,10 +14,10 @@ export default function ToggleThemeComponent(props: ToggleThemeComponent) {
     const toggle = document.querySelector<HTMLInputElement>("#ToggleTheme");
     const toggleLabel =
       document.querySelector<HTMLLabelElement>("#ToggleThemeLabel");
-    toggle.checked = Boolean(html?.classList.contains("dark"));
-    toggle.checked
-      ? (toggleLabel.textContent = "Dark Theme")
-      : (toggleLabel.textContent = "Light Theme");
+    toggle!.checked = Boolean(html?.classList.contains("dark"));
+    toggle!.checked
+      ? (toggleLabel!.textContent = "Dark Theme")
+      : (toggleLabel!.textContent = "Light Theme");
   };
   const style = {
     label: `relative inline-flex items-center cursor-pointer text-White`,
