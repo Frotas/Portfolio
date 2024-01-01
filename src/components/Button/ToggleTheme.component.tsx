@@ -1,5 +1,4 @@
 "use client";
-
 import CN from "@app/helpers/ClassHelper";
 
 type ToggleThemeComponent = {
@@ -9,15 +8,13 @@ type ToggleThemeComponent = {
 export default function ToggleThemeComponent(props: ToggleThemeComponent) {
   const ToggleTheme = () => {
     const html = document.querySelector("html");
-    html?.classList.toggle("dark");
-
     const toggle = document.querySelector<HTMLInputElement>("#ToggleTheme");
-    const toggleLabel =
-      document.querySelector<HTMLLabelElement>("#ToggleThemeLabel");
+    const toggleLabel = document.querySelector("#ToggleThemeLabel");
+    html?.classList.toggle("dark");
     toggle!.checked = Boolean(html?.classList.contains("dark"));
     toggle!.checked
-      ? (toggleLabel!.textContent = "Dark Theme")
-      : (toggleLabel!.textContent = "Light Theme");
+      ? (toggleLabel!.innerHTML = `Dark Theme`)
+      : (toggleLabel!.innerHTML = `Light Theme`);
   };
   const style = {
     label: `relative inline-flex items-center cursor-pointer text-White`,
