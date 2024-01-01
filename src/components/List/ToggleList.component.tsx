@@ -42,7 +42,7 @@ export default function ToggleList(props: ListProps) {
   const style = {
     ul: `w-full h-fit flex flex-col item-center pl-4`,
     btn: `
-      w-full h-2
+      w-full h-4
       flex justify-between items-center
     `,
     title: `
@@ -56,30 +56,33 @@ export default function ToggleList(props: ListProps) {
       [&_:nth-child(2)]:font-light [&_:nth-child(2)]:text-[12pt] [&_:nth-child(2)]:w-fit
        [&_:nth-child(2)]:pt-1
     `,
+    listSection: `w-full h-fit`,
   };
   return (
     <>
-      <Button.Toggle
-        onClick={() => {
-          setChecked(!checked);
-          console.warn(checked);
-        }}
-        className={style.btn}
-      >
-        <p className={style.title}>
-          <span>
-            {!checked && `▶`}
-            {checked && `▼`}
-          </span>
-          {title}
-        </p>
-        <p className={style.tip}>{tip}</p>
-      </Button.Toggle>
-      {checked && (
-        <ul className={style.ul}>
-          {<LiHandler className={style.li} items={listItems} />}
-        </ul>
-      )}
+      <section className={CN(style.listSection, className)}>
+        <Button.Toggle
+          onClick={() => {
+            setChecked(!checked);
+            console.warn(checked);
+          }}
+          className={style.btn}
+        >
+          <p className={style.title}>
+            <span>
+              {!checked && `▶`}
+              {checked && `▼`}
+            </span>
+            {title}
+          </p>
+          <p className={style.tip}>{tip}</p>
+        </Button.Toggle>
+        {checked && (
+          <ul className={style.ul}>
+            {<LiHandler className={style.li} items={listItems} />}
+          </ul>
+        )}
+      </section>
     </>
   );
 }
