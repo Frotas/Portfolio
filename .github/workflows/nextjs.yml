@@ -38,12 +38,12 @@ jobs:
           sudo apt install sed
       - name: Check Environment
         id: production-environment
-        if: ${{ vars.ENVIRONMENT == "Prod" }}
-        run: sed -i "s/ENVIRONMENT='Dev'\ENVIRONMENT='Prod'" "${{github.workspace}}/.env"
+        if: ${{ vars.ENVIRONMENT == 'Prod' }}
+        run: sed -i 's/=Dev/=Prod/g' '${{github.workspace}}/.env'
       - name: Check Environment
         id: development-environment
-        if: ${{ vars.ENVIRONMENT == "Dev" }}
-        run: sed -i "s/ENVIRONMENT='Prod'\ENVIRONMENT='Dev'" "${{github.workspace}}/.env"
+        if: ${{ vars.ENVIRONMENT == 'Dev' }}
+        run: sed -i "s/=Prod/=Dev/g" '${{github.workspace}}/.env'
       - name: Detect package manager
         id: detect-package-manager
         run: |
