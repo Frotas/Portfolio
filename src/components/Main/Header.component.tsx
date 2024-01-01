@@ -1,49 +1,48 @@
-import Text from "@app/components/Text";
 import CN from "@app/helpers/ClassHelper";
-import Images from "../Image";
 import Button from "../Button";
+import Header from "./Header";
 
 type HeaderComponentProps = {
   className?: string;
   id?: string;
 };
 
-export default function Header(props: HeaderComponentProps) {
+export default function HeaderContent(props: HeaderComponentProps) {
   const { className, id } = props;
-  const { Title, Paragraph, Quote } = Text;
+  const { Profile, AboutMe, Citation } = Header;
   const { Theme } = Button;
-  const { Image } = Images;
-  const style = `flex flex-col items-center gap-8 py-8 text-White`;
+  const style = {
+    header: `w-full flex flex-col items-center gap-8 py-8 text-White`,
+    about: ` text-start text-wrap-balance`,
+    profile: ``,
+    citation: ` text-end text-wrap-balance`,
+  };
+  const typing = [
+    "< Desenvolvedor Back-End />",
+    2500,
+    "< Desenvolvedor Front-End />",
+    2000,
+    "< Hacker Ético />",
+    2500,
+  ];
   return (
     <>
-      <header id={id} className={CN(style, className)}>
-        <div className="w-full flex items-end">
-          <Theme />
-        </div>
-        <section className="text-start" aria-description="Seção Sobre Mim">
-          <Title className="uppercase">Olá!,</Title>
-          <Paragraph className="font-[15pt]">
-            sou o Guilherme Augusto, Desenvolvedor Full Stack e entusiasta de
-            Segurança da Informação. Formado e Desenvolvimento de Sistemas no
-            Centro Educacional Paula Souza.
-          </Paragraph>
-        </section>
-        <section className="rounded-full border-2 border-Cyprus/25 drop-shadow-lg shadow-Cyprus">
-          <Image
-            className="rounded-full border-RockBlue"
-            src="https://avatars.githubusercontent.com/u/89676387?v=4"
-            alt="GitHub Profile Image"
-            width={200}
-            height={200}
-          />
-        </section>
-        <section className="text-end">
-          <Title className="uppercase">Citação</Title>
-          <Quote className="" author="Albert Einstein">
-            Uma mente que se abre a uma nova ideia, jamais voltará ao seu
-            tamanho original
-          </Quote>
-        </section>
+      <header id={id} className={CN(style.header, className)}>
+        <Theme className="w-full" />
+        <Profile className={style.profile} />
+        <AboutMe className={style.about} wordList={typing}>
+          👋, sou o Guilherme Augusto e tenho formação técnica em Analise em
+          Desenvolvimento de Sistemas pelo Centro Educacional Paula Souza.
+          Possuo experiencia com desenvolvimento front-end e back-end.
+        </AboutMe>
+        <Citation
+          className={style.citation}
+          author="Albert Einstein"
+          about="Citação de Albert Einstein"
+        >
+          Uma mente que se abre a uma nova ideia, jamais voltará ao seu tamanho
+          original
+        </Citation>
       </header>
     </>
   );

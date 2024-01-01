@@ -29,7 +29,9 @@ export default function SkillComponent(props: SkillComponent) {
       <section id={props.id} className={CN(style.section, className)}>
         <header className={style.header.root}>
           <Title className={style.header.title}> Minhas Habilidades </Title>
-          <Subtitle className={style.header.subtitle}> Software's/Framework's </Subtitle>
+          <Subtitle className={style.header.subtitle}>
+            Softwares/Frameworks
+          </Subtitle>
         </header>
         <footer className={CN(style.footer, className)}>
           <Figure
