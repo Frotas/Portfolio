@@ -2,42 +2,39 @@ import { ReactNode } from "react";
 
 import CN from "@app/helpers/ClassHelper";
 
-const QuoteVariants = {
-  default: "default",
-  card: "card",
-  popup: "popup",
-  article: "article",
-} as const;
-type QuoteVariants = keyof typeof QuoteVariants;
-
 export default function Quote({
   className,
   children,
   author,
-  style = "default",
+  description,
 }: {
   author: string;
   className?: string;
   children?: ReactNode;
-  style?: QuoteVariants;
+  description?: string;
 }) {
-  const QuoteVariants = {
-    default: `font-[18pt] font-[300] text-wrap-pretty dark:text-White`,
-    card: ` `,
-    popup: ` `,
-    article: ` `,
-  } as const;
+  const style = {
+    text: `
+      font-[12pt] font-light text-wrap-balance dark:text-White
+      [&_:nth-child(n+1)]:text-[18pt] [&_:nth-child(n+1)]:font-bold
+      [&_:nth-child(n+1)]:italic [&_:nth-child(1)]:pr-1
+      [&_:nth-child(2)]:pl-1
+    `,
+    author: `
+      font-[12pt] font-bold italic
+    `,
+  };
   return (
     <>
       <p
-        className={CN(QuoteVariants[style], className)}
-        aria-description="Citação da fala ou de um trecho de um livro"
+        className={CN(style.text, className)}
+        aria-description={`${description} ${author}`}
       >
-        <span className="font-bold italic">‟</span>
+        <span>“</span>
         {children}
-        <span className="font-bold italic">„</span>
+        <span>„</span>
       </p>
-      <p className="font-bold italic" aria-description="Author da Citação">
+      <p className={style.author} aria-description="Author da Citação">
         — {author}
       </p>
     </>
