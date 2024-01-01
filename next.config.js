@@ -2,7 +2,7 @@ require("dotenv");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output:
-    process.env.ENVIRONMENT === "Pages" && process.env.ENVIRONMENT !== "Docker"
+    process.env.ENVIRONMENT === "Prod" && process.env.ENVIRONMENT !== "Dev"
       ? "export"
       : "standalone",
   images: {
