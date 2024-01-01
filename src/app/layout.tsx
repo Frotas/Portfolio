@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
-import typing from "@app/components/vendor/TypingWrite.effect";
 
 import "./globals.css";
 
