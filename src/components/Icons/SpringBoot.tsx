@@ -1,75 +1,55 @@
 import CN from "@app/helpers/ClassHelper";
+import { IconsProps } from "./@types/IconTypes";
 
-const IconVariants = {
-  'outlined': 'outline',
-  'filled': 'filled',
-  'filled-rad-full': 'filled-rad-full',
-} as const;
-type IconVariants = keyof typeof IconVariants;
-const IconColors = {
-  'standard': 'standard',
-  'white': 'white',
-  'black': 'black',
-}
-type IconColors = keyof typeof IconColors;
-
-export default (
-  {
-    color = 'standard',
-    variant = 'filled'
-  }: {
-    color?: IconColors,
-    variant?: IconVariants
-  }
-) => {
+export default ({ color = "standard", variant = "filled" }: IconsProps) => {
   const style = {
-    'SVGMask': `[mask-type:luminance]`,
-    'default': `w-16 h-16`
-  }
+    SVGMask: `[mask-type:luminance]`,
+    default: `w-16 h-16`,
+  };
   const IconVariants = {
-    'filled': {
-      'standard': `
+    filled: {
+      standard: `
         bg-white
         rounded-[15%]
         [&_path]:fill-lime-600
       `,
-      'white': `
+      white: `
         bg-white
         rounded-[15%]
         [&_path]:fill-DeepDarkBlue
       `,
-      'black': `
+      black: `
         bg-DeepDarkBlue
         rounded-[15%]
         [&_path]:fill-white
       `,
     },
-    'outlined': {
-      'standard': `
+    outlined: {
+      standard: `
         bg-transparent
         [&_path]:fill-lime-600
       `,
-      'white': `
+      white: `
         bg-transparent
         [&_path]:fill-white
       `,
-      'black': `
+      black: `
         bg-transparent
         [&_path]:fill-DeepDarkBlue
       `,
     },
-    'filled-rad-full': {
-      'standard': `
+    "filled-rad-full": {
+      standard: `
         bg-white
         rounded-full
         [&_path]:fill-lime-600
       `,
-      'white': `
+      white: `
         bg-white
         rounded-full
         [&_path]:fill-white
       `,
-      'black': `
+      black: `
         bg-DeepDarkBlue
         rounded-full
         [&_path]:fill-DeepDarkBlue
@@ -91,7 +71,7 @@ export default (
         </g>
       </svg>
     </>
-  )
+  );
 
   // <>
   //   <svg className={CN('w-16 h-16')} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,4 +86,4 @@ export default (
   //     </defs>
   //   </svg>
   // </>
-}
+};

@@ -1,10 +1,8 @@
 "use client";
 import {
-  ElementType,
   HTMLAttributes,
   HTMLProps,
   ReactNode,
-  useState,
 } from "react";
 
 import CN from "@app/helpers/ClassHelper";
@@ -21,11 +19,10 @@ export default function ButtonToggle({
   ...props
 }: MenuToggle) {
   const style = `
-    p-2
+    py-4 px-2
     rounded-lg
     bg-transparent
-    hover:border-TrappedDarkness
-    hover:bg-TrappedDarkness/30
+    hover:bg-RockBlue/30
     focus:outline-none
   `;
   return (

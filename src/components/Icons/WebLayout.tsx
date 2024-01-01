@@ -1,25 +1,7 @@
 import CN from "@app/helpers/ClassHelper";
+import { IconsProps } from "./@types/IconTypes";
 
-const IconVariants = {
-  outlined: "outline",
-  filled: "filled",
-  "filled-rad-full": "filled-rad-full",
-} as const;
-type IconVariants = keyof typeof IconVariants;
-const IconColors = {
-  standard: "standard",
-  white: "white",
-  black: "black",
-};
-type IconColors = keyof typeof IconColors;
-
-export default ({
-  color = "standard",
-  variant = "filled",
-}: {
-  color?: IconColors;
-  variant?: IconVariants;
-}) => {
+export default ({ color = "standard", variant = "filled" }: IconsProps) => {
   const style = {
     SVGMask: `[mask-type:luminance]`,
     default: `w-16 h-16 p-1`,

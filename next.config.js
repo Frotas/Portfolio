@@ -1,16 +1,16 @@
+require("dotenv");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output:'export',
+  output: "export",
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'avatars.githubusercontent.com',
-        port: '',
-        pathname: '/u/**',
-      }
-    ]
-  }
-}
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        pathname: "/u/**",
+      },
+    ],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -48,7 +48,7 @@ export default function NavBar() {
         height={64}
         className={`${menuStyle.transition}`}
       />
-      <Menu.Toggle onClick={toggleMenu} onTouchStart={toggleMenu}>
+      <Menu.Toggle onClick={() => toggleMenu} onTouchStart={() => toggleMenu}>
         - - -
       </Menu.Toggle>
       <Menu.Root id="menuRoot" className={menuStyle.menuRoot}>

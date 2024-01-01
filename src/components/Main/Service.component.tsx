@@ -35,15 +35,18 @@ export default function ServicesComponent(props: ServicesProps) {
         gap-4 dark:text-White
         transition duration-[800ms] ease-in-out
       `,
-      title: `dark:text-White`,
+      title: `dark:text-White text-center`,
       paragraph: `dark:text-White`,
       subtitle: `dark:text-White`,
       list: `dark:text-White`,
+      link: `px-1 text-blue-500 font-semibold hover:text-blue-700 hover:font-bold italic`,
     },
-    title: `text-center w-full dark:text-White
-      z-10 bg-clip-text`,
+    title: `
+      text-center w-full dark:text-White
+      z-10 bg-clip-text
+    `,
   };
-  
+
   const { className } = props;
   const { Figure: Icon } = Image;
   const { Toggle: ToggleList } = List;
@@ -56,65 +59,75 @@ export default function ServicesComponent(props: ServicesProps) {
         <Title className={style.title}> Meus Serviços </Title>
         <Root className={style.cards.root}>
           <Header className={style.cards.header}>
-            <Icon icon={WebCode}></Icon>
-            <Title className={style.cards.title}>Lorem ipsum</Title>
+            <Icon icon={WebCode} />
+            <Title className={style.cards.title}>
+              Desenvolvimento Back-End
+            </Title>
           </Header>
           <Footer className={style.cards.footer}>
             <Paragraph className={style.cards.paragraph}>
               Construção de sistemas robustos e escaláveis no lado do servidor,
-              empregando linguagens como Node.js, Python, Ruby, PHP, juntamente
-              com frameworks como Express, Django, Flask ou Laravel.
+              empregando linguagens como Node.js e Java, juntamente com
+              frameworks como Express e Spring Boot.
             </Paragraph>
             <ToggleList
               title="Serviços"
               tip="Lista Suspensa"
-              listItems={["Desenvolvimento de APIs Seguras"]}
+              listItems={[
+                "Desenvolvimento de APIs Seguras;",
+                "Integração de APIs.",
+              ]}
             />
           </Footer>
         </Root>
         <Root className={style.cards.root}>
           <Header className={style.cards.header}>
-            <Icon icon={Web}></Icon>
-            <Title className={style.cards.title}>Lorem ipsum</Title>
+            <Icon icon={Web} />
+            <Title className={style.cards.title}>
+              Desenvolvimento Front-End
+            </Title>
           </Header>
           <Footer className={style.cards.footer}>
             <Paragraph className={style.cards.paragraph}>
-              Criação de interfaces de usuário atraentes e responsivas,
-              utilizando tecnologias modernas como HTML, CSS, JavaScript, e
-              frameworks como React, Vue.js ou Angular
+              Criação de interfaces de usuário responsivas,
+              utilizando tecnologias modernas como HTML5, CSS, JavaScript, e
+              frameworks como React, Vue.js ou Angular.
             </Paragraph>
+            <ToggleList
+              title={"Serviços"}
+              tip="Lista Suspensa"
+              listItems={[
+                "Desenvolvimento de Websites Responsivos;",
+                "Desenvolvimento de Protótipos e MVPs (Minimum Viable Products).",
+              ]}
+            />
           </Footer>
         </Root>
         <Root className={style.cards.root}>
           <Header className={style.cards.header}>
-            <Icon icon={Sec}></Icon>
+            <Icon icon={Sec} />
             <Title className={style.cards.title}>Cybersecurity</Title>
           </Header>
           <Footer className={style.cards.footer}>
             <Paragraph className={style.cards.paragraph}>
               Integração de sistemas e implementação de técnicas seguindo os
               padrões de segurança e proteção de dados da
-              <Link
-                href="#"
-                className="px-1 text-blue-500 font-semibold hover:text-blue-700 hover:font-bold italic"
-              >
+              <Link href="#" className={style.cards.link}>
                 OWASP Foundation
               </Link>
-              e do órgão publico
-              <Link
-                href="#"
-                className="px-1 text-blue-500 font-semibold hover:text-blue-700 hover:font-bold italic"
-              >
-                Autoridade Nacional de Proteção de Dados.
+              e da
+              <Link href="#" className={style.cards.link}>
+                Autoridade Nacional de Proteção de Dados
               </Link>
+              .
             </Paragraph>
             <ToggleList
               title="Serviços"
               tip="Lista Suspensa"
               listItems={[
-                "Consultoria em Segurança da Informação",
-                "Auditoria de Segurança de Aplicativos Web",
-                "Implementação de Medidas de Proteção de Dados",
+                "Análise de Vulnerabilidades e Melhorias de Segurança;",
+                "Implementação de Medidas de Proteção de Dados;",
+                "Implementação e Melhoria de Segurança em Aplicações Web.",
               ]}
             />
           </Footer>
