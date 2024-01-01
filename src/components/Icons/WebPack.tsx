@@ -1,80 +1,59 @@
 import CN from "@app/helpers/ClassHelper";
+import { IconsProps } from "./@types/IconTypes";
 
-const IconVariants = {
-  'outlined': 'outline',
-  'filled': 'filled',
-  'filled-rad-full': 'filled-rad-full',
-} as const;
-type IconVariants = keyof typeof IconVariants;
-const IconColors = {
-  'standard': 'standard',
-  'white': 'white',
-  'black': 'black',
-}
-type IconColors = keyof typeof IconColors;
-
-export default (
-  {
-    color = 'standard',
-    variant = 'filled'
-  }:
-    {
-      color?: IconColors,
-      variant?: IconVariants
-    }
-) => {
+export default ({ color = "standard", variant = "filled" }: IconsProps) => {
   const style = {
-    'SVGMask': `[mask-type:luminance]`,
-    'default': `
+    SVGMask: `[mask-type:luminance]`,
+    default: `
       w-16 h-16
       [&_path:nth-child(1)]:fill-white
       [&_path:nth-child(2)]:fill-[#8ED6FB]
       [&_path:nth-child(3)]:fill-[#1C78C0]
-    `
-  }
+    `,
+  };
   const IconVariants = {
-    'filled': {
-      'standard': `
+    filled: {
+      standard: `
         bg-white
         rounded-[15%]
       `,
-      'white': `
+      white: `
         bg-white
         rounded-[15%]
       `,
-      'black': `
+      black: `
         bg-DeepDarkBlue
         rounded-[15%]
       `,
     },
-    'outlined': {
-      'standard': `
+    outlined: {
+      standard: `
         bg-transparent
       `,
-      'white': `
+      white: `
         bg-transparent
       `,
-      'black': `
+      black: `
         bg-transparent
       `,
     },
-    'filled-rad-full': {
-      'standard': `
+    "filled-rad-full": {
+      standard: `
         bg-white
         rounded-full
       `,
-      'white': `
+      white: `
         bg-white
         rounded-full
       `,
-      'black': `
+      black: `
         bg-DeepDarkBlue
         rounded-full
       `,
     },
-    'none': {
-      'none': ''
-    }
+    none: {
+      none: "",
+    },
   };
 
   return (
@@ -100,6 +79,5 @@ export default (
         </g>
       </svg>
     </>
-  )
-
-}
+  );
+};

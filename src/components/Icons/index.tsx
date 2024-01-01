@@ -1,6 +1,6 @@
 import Bootstrap from "./Bootstrap";
 import DataBase from "./DataBase";
-import Java, { IconColors, IconVariants, IconProps } from "./Java";
+import Java from "./Java";
 import JavaScript from "./JavaScript";
 import NextJS from "./NextJS";
 import NodeJS from "./NodeJS";
@@ -12,11 +12,6 @@ import UML from "./UML";
 import WebCode from "./WebCode";
 import WebLayout from "./WebLayout";
 import WebPack from "./WebPack";
-
-export type IconsProps = {
-  color?: IconColors;
-  variant?: IconVariants;
-} & IconProps;
 
 export default {
   BS: Bootstrap,

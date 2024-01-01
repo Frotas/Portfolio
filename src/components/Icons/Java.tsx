@@ -1,80 +1,62 @@
 import CN from "@app/helpers/ClassHelper";
+import { IconsProps } from "./@types/IconTypes";
 
-export const IconVariants = {
-  outlined: "outline",
-  filled: "filled",
-  "filled-rad-full": "filled-rad-full",
-} as const;
-export type IconVariants = keyof typeof IconVariants;
-const IconColors = {
-  standard: "standard",
-  white: "white",
-  black: "black",
-};
-export type IconColors = keyof typeof IconColors;
-
-export type IconProps = {
-  color?: IconColors;
-  variant?: IconVariants;
-  className?: string;
-};
-export const IconVariant = {
-  filled: {
-    standard: `
-        bg-white
-        rounded-[15%]
-        [&_path:nth-child(1)]:fill-[#007396]
-        [&_path:nth-child(2)]:fill-[#ED8B00]
-      `,
-    white: `
-        bg-white
-        rounded-[15%]
-        [&_path]:fill-DeepDarkBlue
-      `,
-    black: `
-        bg-DeepDarkBlue
-        rounded-[15%]
-        [&_path]:fill-white
-      `,
-  },
-  outlined: {
-    standard: `
-        bg-transparent
-        [&_path:nth-child(1)]:fill-[#007396]
-        [&_path:nth-child(2)]:fill-[#ED8B00]
-      `,
-    white: "bg-transparent [&_path]:fill-white",
-    black: "bg-transparent [&_path]:fill-DeepDarkBlue",
-  },
-  "filled-rad-full": {
-    standard: `
-        bg-white
-        rounded-full
-        [&_path:nth-child(1)]:fill-[#007396]
-        [&_path:nth-child(2)]:fill-[#ED8B00]
-      `,
-    white: `
-        bg-white
-        rounded-full
-        [&_path]:fill-DeepDarkBlue
-      `,
-    black: `
-        bg-DeepDarkBlue
-        rounded-full
-        [&_path]:fill-white
-      `,
-  },
-};
 export default ({
   color = "standard",
   variant = "filled",
   className,
-}: IconProps) => {
+}: IconsProps) => {
   const style = {
     SVGMask: `[mask-type:luminance]`,
     default: `w-16 h-16`,
   };
-
+  const IconVariant = {
+    filled: {
+      standard: `
+        bg-white
+        rounded-[15%]
+        [&_path:nth-child(1)]:fill-[#007396]
+        [&_path:nth-child(2)]:fill-[#ED8B00]
+      `,
+      white: `
+        bg-white
+        rounded-[15%]
+        [&_path]:fill-DeepDarkBlue
+      `,
+      black: `
+        bg-DeepDarkBlue
+        rounded-[15%]
+        [&_path]:fill-white
+      `,
+    },
+    outlined: {
+      standard: `
+        bg-transparent
+        [&_path:nth-child(1)]:fill-[#007396]
+        [&_path:nth-child(2)]:fill-[#ED8B00]
+      `,
+      white: "bg-transparent [&_path]:fill-white",
+      black: "bg-transparent [&_path]:fill-DeepDarkBlue",
+    },
+    "filled-rad-full": {
+      standard: `
+        bg-white
+        rounded-full
+        [&_path:nth-child(1)]:fill-[#007396]
+        [&_path:nth-child(2)]:fill-[#ED8B00]
+      `,
+      white: `
+        bg-white
+        rounded-full
+        [&_path]:fill-DeepDarkBlue
+      `,
+      black: `
+        bg-DeepDarkBlue
+        rounded-full
+        [&_path]:fill-white
+      `,
+    },
+  } as const;
   return (
     <>
       <svg
