@@ -31,13 +31,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Intall software dependencies
+      - name: Intall Software Dependencies
+        id: intall-software-dependencies
         run: |
-          echo "Update System" |
           sudo apt update |
-          sudo apt upgrade |
-          echo "Inatall SED dependencies:" | 
-          apt install sed
+          sudo apt install sed
       - name: Detect package manager
         id: detect-package-manager
         run: |
