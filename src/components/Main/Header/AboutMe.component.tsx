@@ -21,12 +21,14 @@ export default function AboutMeComponent(props: HeaderAboutMeProps) {
       w-full
       uppercase
       text-start
-      whitespace-nowrap overflow-hidden
       py-1
     `,
     subtitle: `
-      w-full h-fit
-      text-[17pt]
+      w-full
+      text-[14pt]
+      sm:text-[16pt]
+      md:text-[18pt]
+      lg:text-[20pt]
       text-center
       py-1
     `,
@@ -43,9 +45,11 @@ export default function AboutMeComponent(props: HeaderAboutMeProps) {
       className={CN(style.section, className)}
       aria-description="Seção Sobre Mim"
     >
-      {!!wordList.values() && (
+      {wordList.length !== 0 && (
         <Subtitle className={style.subtitle}>
+          <span>{`<`}</span>
           <TypeAnimation sequence={wordList} repeat={Infinity} />
+          <span>{`/>`}</span>
         </Subtitle>
       )}
       {!!title && <Title className={style.title}>{title}</Title>}

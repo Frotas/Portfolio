@@ -16,7 +16,7 @@ export default function CitationComponent(props: HeaderCitationProps) {
     section: `text-end w-full h-fit`,
     title: `uppercase`,
     quote: `text-wrap-balance`,
-    author: `font-bold italic`,
+    author: `font-bold italic pl-2`,
   };
   return (
     <section className={CN(style.section, className)}>
@@ -24,8 +24,8 @@ export default function CitationComponent(props: HeaderCitationProps) {
       <cite about={about}>
         <Paragraph className={style.quote}>
           <q>{children}</q>
+          <span className={style.author}>— {author}</span>
         </Paragraph>
-        <span className={style.author}>— {author}</span>
       </cite>
     </section>
   );

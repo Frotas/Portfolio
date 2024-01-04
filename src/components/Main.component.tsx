@@ -9,21 +9,36 @@ type MainComponentProps = {
 
 export default function MainComponent({ className }: MainComponentProps) {
   const { Header, Service, Skill, Form } = MainComponents;
-  const style = `
-    bg-DarkSlateGray dark:bg-DeepDarkBlue
-    flex flex-col gap-12
-  `;
+  const style = {
+    main: `
+      bg-DarkSlateGray dark:bg-DeepDarkBlue
+    `,
+    header: `px-8 py-10`,
+    service: `
+      justify-center items-center
+      px-8 py-10
+    `,
+    section: {
+      root: `
+        flex flex-col gap-8 justify-center items-center`,
+      skill: `w-fit md:w-fit`,
+      form: `w-fit md:w-[50%]`,
+    },
+  };
 
   return (
     <>
-      <main className={CN(style, className)}>
-        <Header id="AboutMe" className="px-8 md:px-60" />
+      <main className={CN(style.main, className)}>
+        
+        <Header id="AboutMe" className={style.header} />
 
-        <Service id="Services" className={`px-8 md:px-60`} />
+        <Service id="Services" className={style.service+'grid-cols-2 grid-rows-2'} />
 
-        <Skill id="Skills" className="px-8 md:px-60" />
+        <section className={style.section.root}>
+          <Skill id="Skills" className={style.section.skill} />
 
-        <Form id="ContactForm" className="px-8 md:px-60" />
+          <Form id="ContactForm" className={style.section.form} />
+        </section>
       </main>
     </>
   );

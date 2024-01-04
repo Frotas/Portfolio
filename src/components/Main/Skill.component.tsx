@@ -22,7 +22,7 @@ export default function SkillComponent(props: SkillComponent) {
       title: `text-center py-2 text-White`,
       subtitle: `text-center pt-1 text-White`,
     },
-    footer: `w-full flex flex-wrap gap-4 justify-center md:flex-nowrap md:gap-[4rem]`,
+    footer: `w-full flex flex-wrap gap-4 md:gap-10 justify-center`,
   };
   return (
     <>
