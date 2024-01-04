@@ -16,9 +16,9 @@ export default function ContactForm(props: ContactFormProps) {
     section: `w-full flex flex-col gap-4`,
     title: `text-center text-White`,
     form: {
-      root: `gap-8 md:justify-center md:items-center p-0`,
+      root: `gap-8 md:justify-center md:items-center`,
       input: `text-black`,
-      textarea: `resize-y h-fit`,
+      textarea: `resize-y h-max`,
     },
   };
   return (
@@ -86,7 +86,7 @@ export default function ContactForm(props: ContactFormProps) {
         <Button.Root
           form="ContactForm"
           onSubmit={() => {}}
-          className="text-White my-4"
+          className="text-White p-4 md:w-[50%]"
         >
           Solicitar Orçamento
         </Button.Root>

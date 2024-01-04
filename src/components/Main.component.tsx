@@ -20,9 +20,11 @@ export default function MainComponent({ className }: MainComponentProps) {
     `,
     section: {
       root: `
-        flex flex-col gap-8 justify-center items-center`,
-      skill: `w-fit md:w-fit`,
-      form: `w-fit md:w-[50%]`,
+        flex flex-col gap-8 justify-center items-center
+        py-8 px-8
+      `,
+      skill: ``,
+      form: `min-w-[256px] md:min-w-[618px] p-0`,
     },
   };
 
