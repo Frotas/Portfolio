@@ -14,15 +14,11 @@ const config: Config = {
         DarkSlateGray: "#1E5359",
         TrappedDarkness: "#081526",
       },
-    },
-    screens: {
-      sm: { min: "320px" },
-      md: { min: "744px" },
-      lg: { min: "1280px" },
-
-      mobile: { min: "320px", max: "744px" },
-      tablet: { min: "744px", max: "1280px" },
-      desktop: { min: "1280px" },
+      screens: {
+        mobile: { min: "320px" },
+        tablet: { min: "744px" },
+        desktop: { min: "1280px" },
+      },
     },
   },
   plugins: [
