@@ -30,6 +30,7 @@ export default function HeaderContent(props: HeaderComponentProps) {
       md:col-start-2
       [&_h2]:text-center
       [&_cite]:text-justify
+      md:[&_cite]:text-center
     `,
   };
   const typing = [
