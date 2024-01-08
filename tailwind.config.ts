@@ -22,9 +22,9 @@ const config: Config = {
     },
   },
   plugins: [
-    require("./src/plugin/OrphansUtility.plugin"),
-    require("./src/plugin/TextWrapUtility.plugin"),
-    require("./src/plugin/WordBreak.plugin"),
+    require("./lib/tailwindcss/plugin/OrphansUtility.plugin"),
+    require("./lib/tailwindcss/plugin/TextWrapUtility.plugin"),
+    require("./lib/tailwindcss/plugin/WordBreak.plugin"),
   ],
 };
 export default config;
