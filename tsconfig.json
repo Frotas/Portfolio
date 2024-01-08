@@ -25,9 +25,7 @@
     "paths": {
       "@app/*": [
         "./src/*",
-        "./src/components/*",
-        "./src/plugins/*",
-        "./src/helpers/*"
+        "./lib/*",
       ]
     }
   },
