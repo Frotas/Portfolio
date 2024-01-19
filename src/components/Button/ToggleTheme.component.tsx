@@ -36,7 +36,7 @@ export default function ToggleThemeComponent(props: ToggleThemeComponent) {
 
   return (
     <>
-      <label htmlFor="ToggleMenu" className={CN(style.label, className)}>
+      <label htmlFor="ToggleTheme" className={CN(style.label, className)}>
         <input
           type="checkbox"
           id="ToggleTheme"
