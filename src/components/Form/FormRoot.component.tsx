@@ -1,18 +1,29 @@
 import CN from "@app/helpers/ClassHelper";
-import { HTMLProps } from "react";
+import { HTMLProps, ReactNode, forwardRef } from "react";
 
 type FormComponentProps = {
   className?: string;
-} & HTMLProps<HTMLFormElement>;
+  children: ReactNode;
+};
 
-export default function FormRoot(props: FormComponentProps) {
-  const { className, children } = props;
+const FormRoot = forwardRef<
+  HTMLFormElement,
+  FormComponentProps & HTMLProps<HTMLFormElement>
+>((props, ref) => {
+  const { className, children, onSubmit } = props;
   const style = `flex flex-col gap-4 py-8`;
   return (
     <>
-      <form {...props} className={CN(style, className)}>
-        {children}
+      <form
+        {...props}
+        ref={ref}
+        onSubmit={onSubmit}
+        className={CN(style, className)}
+      >
+       {children}
       </form>
     </>
   );
-}
+});
+
+export default FormRoot;

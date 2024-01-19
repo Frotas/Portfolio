@@ -1,33 +1,37 @@
 import CN from "@app/helpers/ClassHelper";
-import { HTMLProps } from "react";
+import { HTMLAttributes, HTMLProps, forwardRef } from "react";
 
 type InputComponentProps = {
-  className?: string;
-  placeholder?: string;
   id?: string;
-  type?: string;
-  cols?: number;
-  rows?: number;
-  name?: string;
-  form?: string;
-} & HTMLProps<HTMLInputElement> &
-  HTMLProps<HTMLTextAreaElement>;
+  className?: string;
+  label?: string | undefined;
+  isLabel?: boolean | undefined;
+};
 
-export default function InputComponent(props: InputComponentProps) {
-  const { className, type } = props;
-  const style = {
-    input: `w-full h-fit rounded-lg bg-DeepDarkBlue text-White dark:text-Black dark:bg-zinc-300 pl-8 pr-2 py-2`,
-    textarea: `w-full rounded-lg bg-DeepDarkBlue text-White dark:text-Black dark:bg-zinc-300 pl-8 pr-2 py-2`,
-  };
+const style = {
+  input: `w-full h-fit rounded-lg bg-DeepDarkBlue text-White dark:text-Black dark:bg-zinc-300 pl-6 pr-2`,
+  textarea: `w-full rounded-lg bg-DeepDarkBlue text-White dark:text-Black dark:bg-zinc-300 pl-6 pr-2 py-2`,
+  label: `pl-6 text-white font-semibold`,
+};
+export const InputComponent = forwardRef<
+  HTMLInputElement,
+  InputComponentProps & HTMLProps<HTMLInputElement>
+>((props, ref) => {
+  const { className } = props;
 
+  return <input {...props} ref={ref} className={CN(style.input, className)} />;
+});
+
+export const TextareaComponent = forwardRef<
+  HTMLTextAreaElement,
+  InputComponentProps & HTMLProps<HTMLTextAreaElement>
+>((props, ref) => {
+  const { className } = props;
   return (
-    <>
-      {type != "textarea" && (
-        <input {...props} className={CN(style.input, className)} />
-      )}
-      {type == "textarea" && (
-        <textarea {...props} className={CN(style.textarea, className)} />
-      )}
-    </>
+    <textarea
+      {...props}
+      ref={ref}
+      className={CN(style.textarea, className)}
+    ></textarea>
   );
-}
+});
