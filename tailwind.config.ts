@@ -22,9 +22,14 @@ const config: Config = {
     },
   },
   plugins: [
-    require("./lib/tailwindcss/plugin/OrphansUtility.plugin"),
     require("./lib/tailwindcss/plugin/TextWrapUtility.plugin"),
+    require("./lib/tailwindcss/plugin/Stroke-LineJoin.plugin"),
+    require("./lib/tailwindcss/plugin/Stroke-LineCap.plugin"),
+    require("./lib/tailwindcss/plugin/OrphansUtility.plugin"),
+    require("./lib/tailwindcss/plugin/StopColor.plugin"),
     require("./lib/tailwindcss/plugin/WordBreak.plugin"),
+    require("./lib/tailwindcss/plugin/ClipPath.plugin"),
+    require("autoprefixer"),
   ],
 };
 export default config;
