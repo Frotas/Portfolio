@@ -1,5 +1,5 @@
 import CN from "@app/helpers/ClassHelper";
-import { HTMLAttributes, HTMLProps, forwardRef } from "react";
+import { HTMLProps, forwardRef } from "react";
 
 type InputComponentProps = {
   id?: string;
