@@ -4,7 +4,10 @@ import { IconsProps } from "./@types/IconTypes";
 export default ({ color = "standard", variant = "filled" }: IconsProps) => {
   const style = {
     SVGMask: `[mask-type:luminance]`,
-    default: `w-16 h-16`,
+    default: `
+      w-16 h-16
+      [&_linearGradient_stop]:stopColor-white
+    `,
   };
   const IconVariants = {
     filled: {
@@ -101,8 +104,8 @@ export default ({ color = "standard", variant = "filled" }: IconsProps) => {
             y2="2743.23"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="white" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop offset="0" />
+            <stop offset="1" stopOpacity="0"/>
           </linearGradient>
           <linearGradient
             id="paint1_linear_89_519"
@@ -112,33 +115,11 @@ export default ({ color = "standard", variant = "filled" }: IconsProps) => {
             y2="1432.39"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="white" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop offset="0" />
+            <stop offset="1" stopOpacity="0"/>
           </linearGradient>
         </defs>
       </svg>
     </>
   );
-  //   return (
-  //     <>
-  //       <svg className={CN(`w-16 h-16`, size)} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  //         <g mask="url(#mask0_89_518)">
-  //           <path d="M32 56C45.2548 56 56 45.2548 56 32C56 18.7452 45.2548 8 32 8C18.7452 8 8 18.7452 8 32C8 45.2548 18.7452 56 32 56Z" fill="black" />
-  //           <path d="M47.8688 50.0052L26.4377 22.3999H22.3999V41.5918H25.6302V26.5024L45.333 51.9585C46.2207 51.3644 47.0678 50.7118 47.8688 50.0052Z" fill="url(#paint0_linear_89_518)" />
-  //           <path d="M38.6667 22.3999H41.8668V41.5999H38.6667V22.3999Z" fill="url(#paint1_linear_89_518)" />
-  //         </g>
-  //         <defs>
-  //           <linearGradient id="paint0_linear_89_518" x1="1439.31" y1="1689.06" x2="2289.82" y2="2743.23" gradientUnits="userSpaceOnUse">
-  //             <stop stop-color="white" />
-  //             <stop offset="1" stop-color="white" stop-opacity="0" />
-  //           </linearGradient>
-  //           <linearGradient id="paint1_linear_89_518" x1="198.67" y1="22.3999" x2="193.256" y2="1432.39" gradientUnits="userSpaceOnUse">
-  //             <stop stop-color="white" />
-  //             <stop offset="1" stop-color="white" stop-opacity="0" />
-  //           </linearGradient>
-  //         </defs>
-  //       </svg>
-  //     </>
-  //   )
-  // }
 };
