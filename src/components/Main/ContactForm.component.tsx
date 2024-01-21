@@ -53,46 +53,6 @@ export default function ContactForm(props: ContactFormProps) {
     setOutput(JSON.stringify(data, null, 2));
   };
 
-  const registerInput = {
-    name: register("name"),
-    email: register("email"),
-    phone: register("phone"),
-    subject: register("subject"),
-    message: register("message"),
-  };
-  const inputRegisterData = {
-    name: {
-      name: registerInput.name.name,
-      isRequired: registerInput.name.required,
-      pattern: registerInput.name.pattern,
-      ref: registerInput.name.ref,
-    },
-    email: {
-      name: registerInput.email.name,
-      isRequired: registerInput.email.required,
-      pattern: registerInput.email.pattern,
-      ref: registerInput.email.ref,
-    },
-    phone: {
-      name: registerInput.phone.name,
-      isRequired: registerInput.phone.required,
-      pattern: registerInput.phone.pattern,
-      ref: registerInput.phone.ref,
-    },
-    subject: {
-      name: registerInput.subject.name,
-      isRequired: registerInput.subject.required,
-      pattern: registerInput.subject.pattern,
-      ref: registerInput.subject.ref,
-    },
-    message: {
-      name: registerInput.message.name,
-      isRequired: registerInput.message.required,
-      pattern: registerInput.message.pattern,
-      ref: registerInput.message.ref,
-    },
-  };
-
   return (
     <section className={CN(style.section, className)}>
       <FormRoot
@@ -114,6 +74,7 @@ export default function ContactForm(props: ContactFormProps) {
               placeholder="Primeiro e Ultimo Nome"
               aria-invalid={errors?.name ? "true" : "false"}
               autoComplete="name"
+              {...register("name")}
             />
             {errors?.name && (
               <span className={style.output.err}>{errors?.name?.message}</span>
@@ -128,6 +89,7 @@ export default function ContactForm(props: ContactFormProps) {
               placeholder="Insira seu melhor e-Mail"
               aria-invalid={errors?.email ? "true" : "false"}
               autoComplete="email"
+              {...register("email")}
             />
             {errors?.email && (
               <span className={style.output.err}>{errors?.email?.message}</span>
@@ -142,6 +104,7 @@ export default function ContactForm(props: ContactFormProps) {
               placeholder="Número para Contato"
               aria-invalid={errors?.phone ? "true" : "false"}
               autoComplete="tel"
+              {...register("phone")}
             />
             {errors?.phone && (
               <span className={style.output.err}>{errors?.phone?.message}</span>
@@ -156,6 +119,7 @@ export default function ContactForm(props: ContactFormProps) {
               aria-invalid={errors?.subject ? "true" : "false"}
               autoComplete="off"
               spellCheck
+              {...register("subject")}
             />
             {errors?.subject && (
               <span className={style.output.err}>
@@ -173,6 +137,7 @@ export default function ContactForm(props: ContactFormProps) {
               aria-invalid={errors?.message ? "true" : "false"}
               autoComplete="off"
               spellCheck
+              {...register("message")}
             />
             {errors?.message && (
               <span className={style.output.err}>
