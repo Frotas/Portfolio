@@ -1,7 +1,7 @@
 require("dotenv");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
+  output: process.env.ENVIRONMENT === "Production" ? "export" : "standalone",
   images: {
     remotePatterns: [
       {
