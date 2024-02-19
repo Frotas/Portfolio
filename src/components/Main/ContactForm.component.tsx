@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Schema, tSchema } from "@app/components/Form/Schema";
@@ -12,13 +12,6 @@ import Form from "../Form";
 type ContactFormProps = {
   id?: string;
   className?: string;
-};
-const FormInputsControl: tSchema = {
-  message: "",
-  name: "",
-  email: "",
-  subject: "",
-  phone: "",
 };
 
 export default function ContactForm(props: ContactFormProps) {
