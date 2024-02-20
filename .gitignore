@@ -55,3 +55,6 @@ next-env.d.ts
 # Others Files
 **/*log*
 **/*env*
+
+# Firebase Security Files
+**/firestore.rules
