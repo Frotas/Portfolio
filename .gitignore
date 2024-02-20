@@ -48,6 +48,10 @@ next-env.d.ts
 # Built Visual Studio Code Extensions
 *.vsix
 
+# Firebase Files
+**/firebase/*.rules
+!**/firebase/*.json
+
 # Others Files
 **/*log*
 **/*env*
