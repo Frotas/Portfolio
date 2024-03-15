@@ -1,6 +1,6 @@
 {
-  "name": "portifolio",
-  "version": "1.0.0",
+  "name": "portfolio",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,26 +9,35 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
+    "@tailwindcss/forms": "^0.5.7",
+    "@vercel/analytics": "^1.1.2",
     "clsx": "^2.0.0",
-    "next": "14.0.3",
+    "html-react-parser": "^5.1.8",
+    "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.49.2",
     "react-type-animation": "^3.2.0",
+    "sass": "^1.71.1",
     "sharp": "^0.33.1",
-    "tailwind-merge": "^2.0.0"
+    "tailwind-merge": "^2.0.0",
+    "uuid": "^9.0.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@iconify/react": "^4.1.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "autoprefixer": "^10.0.1",
+    "@types/uuid": "^9.0.8",
+    "autoprefixer": "^10.4.17",
     "dotenv": "^16.3.1",
     "eslint": "^8",
-    "eslint-config-next": "14.0.3",
-    "postcss": "^8",
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8.4.35",
     "react-icons": "^4.12.0",
-    "tailwindcss": "^3.3.0",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
 }
