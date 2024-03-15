@@ -122,7 +122,7 @@ export default function NavigationComponent({
             active={active === "skills"}
             onClick={(e) => itemHandleClick("skills")}
           >
-            <Link className={style.link} href="#skills" scroll={true}>
+            <Link className={style.link} href="#hardSkills" scroll={true}>
               Habilidades
             </Link>
           </NavTab>
@@ -130,7 +130,7 @@ export default function NavigationComponent({
             active={active === "contact"}
             onClick={(e) => itemHandleClick("contact")}
           >
-            <Link className={style.link} href="#contact" scroll={false}>
+            <Link className={style.link} href="#contact" scroll={true}>
               Meios de Contato
             </Link>
           </NavTab>
