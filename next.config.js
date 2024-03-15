@@ -9,6 +9,18 @@ const nextConfig = {
         hostname: "avatars.githubusercontent.com",
         pathname: "/u/**",
       },
+      {
+        //https://media.licdn.com/dms/image/
+        protocol: "https",
+        hostname: "media.licdn.com",
+        pathname: "/dms/image/**"
+      },
+      {
+        // https://placehold.co/
+        protocol: "https",
+        hostname: "placehold.co",
+        pathname: "/**"
+      }
     ],
   },
 };
