@@ -119,7 +119,7 @@ export default function ServiceComponent({
               >
                 OWASP Foundation
               </Link>{" "}
-              da
+              e da
               <Link
                 className={style.link}
                 href={"https://www.gov.br/anpd/pt-br"}
