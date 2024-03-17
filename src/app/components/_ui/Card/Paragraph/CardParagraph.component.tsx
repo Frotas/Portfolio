@@ -12,7 +12,10 @@ export default function CardParagraphComponent({
   children,
   ...rest
 }: CardParagraphComponentProps) {
-  const style = `font-paragraph font-light text-[12pt] text-black dark:text-black `;
+  const style = `
+    font-paragraph text-center text-pretty text-[12pt]
+    text-black dark:text-white
+  `;
   return (
     <Paragraph {...rest} className={CN(style, className)}>
       {children}

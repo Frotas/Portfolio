@@ -19,12 +19,13 @@ import {
 } from "./components/_ui/Assets";
 import { Title } from "./components/_ui/Typography";
 import { Icon } from "./components/_ui/Icon";
+import { RxExternalLink } from "react-icons/rx";
 
 export default function Home(): ReactNode {
   return (
     <main
       id="content"
-      className={`px-4 py-16 md:!py-12 md:!px-16 animate-opacity transition-opacity`}
+      className={`px-4 pb-16 md:!pb-12 md:!px-16 animate-opacity transition-opacity`}
     >
       <Hero id="about" />
       <Title className="text-center" heading="h2">
@@ -59,27 +60,27 @@ export default function Home(): ReactNode {
       </Title>
       <Contact id="contact">
         <Link
-          className="link font-semibold"
+          className="link"
           href="mailto:gs.dev.oficial@gmail.com"
           target="_blank"
         >
           <Icon icon={GMail} caption="GMail" />
         </Link>
         <Link
-          className="link font-semibold"
+          className="link"
           href="https://www.github.com/frotas/"
           target="_blank"
         >
           <Icon icon={GitHub} caption="GitHub" />
         </Link>
         <Link
-          className="link font-semibold"
+          className="link"
           href="https://www.linkedin.com/in/guilherme-af-sales/"
           target="_blank"
         >
           <Icon icon={LinkedIn} caption="LinkedIn" />
         </Link>
-        <Link className="link font-semibold" href="tel:+5511981028442">
+        <Link className="link" href="tel:+5511981028442">
           <Icon icon={WhatsApp} caption="WhatsApp" />
         </Link>
       </Contact>

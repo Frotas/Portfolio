@@ -9,6 +9,7 @@ import {
   CardParagraph,
 } from "../../_ui/Card";
 import { Security, Server, WebLayout } from "../../_ui/Assets";
+import { RxExternalLink } from "react-icons/rx";
 
 type ServiceComponentProps = {
   className?: string;
@@ -30,22 +31,31 @@ export default function ServiceComponent({
 }: ServiceComponentProps) {
   const style = {
     root: `
-      flex flex-col gap-8
-      md:!flex-row md:flex-wrap lg:flex-nowrap
-      [&_div:nth-child(1n)]:m-auto
+      flex flex-col gap-4
+      [&_div:nth-child(1)]:m-auto
+      md:!grid md:grid-cols-2 md:grid-rows-2 md:justify-center
+      md:[&_.cardRoot:nth-child(1)]:col-span-1
+      md:[&_.cardRoot:nth-child(2)]:col-span-1
+      md:[&_.cardRoot:nth-child(3)]:col-span-2
+      md:[&_.cardRoot:nth-child(3)]:row-span-2
+      md:[&_.cardRoot:nth-child(3)]:!h-fit
     `,
-    wrapper: `bg-rockBlue-500 rounded-md p-4 md:max-h-[29em] md:w-[50%]`,
-    card: `h-fit flex flex-col p-2`,
+    wrapper: `cardRoot md:shadow-2xl`,
+    card: ``,
     icon: ``,
-    title: `w-auto font-title font-semibold text-center text-[16pt] md:text-[20pt] pt-4 pb-2`,
-    paragraph: `font-paragraph text-center text-wrap-pretty md:text-justify`,
-    link: `italic text-blue-600 hover:underline px-1 `,
+    title: `md:text-[20pt] pt-4 pb-2`,
+    paragraph: `
+      md:text-justify text-wrap
+    `,
+    link: `max-w-fit link inline-flex items-baseline whitespace-nowrap px-1
+      [&_.externalLinkIcon]:ml-1
+    `,
     button: `
       uppercase text-center text-white font-display font-semibold
       mx-auto my-4 px-4 py-2 rounded-md bg-blue-600 w-[60%]
-      md:w-[80%]
       hover:bg-blue-600/10 hover:text-blue-600 hover:border-blue-600 hover:border
       hover:no-underline
+      md:w-[80%]
     `,
   };
   return (
@@ -60,13 +70,13 @@ export default function ServiceComponent({
               Desenvolvimento Back-End
             </CardTitle>
             <CardParagraph className={style.paragraph}>
-              Construção de sistemas robustos e escaláveis no lado do servidor,
-              empregando linguagens como Node.js e Java, juntamente com
-              frameworks como Express e Spring Boot.
+              Construção de sistemas robustos e escaláveis, empregando
+              linguagens como Node.js, Java, juntamente com frameworks como
+              Express e JavaSpring.
             </CardParagraph>
             {!options![0].hidden?.button && (
               <Link
-                className={CN(style.link)}
+                className={CN(style.button)}
                 href="#contactForm"
                 scroll={true}
               >
@@ -87,12 +97,11 @@ export default function ServiceComponent({
             </CardTitle>
             <CardParagraph className={style.paragraph}>
               Criação de interfaces de usuário responsivas, utilizando
-              tecnologias modernas como HTML5, CSS, JavaScript, e frameworks
-              como React, Vue.js ou Angular.
+              tecnologias modernas como React.js, Next.js, Angular e JavaSpring.
             </CardParagraph>
             {!options![0].hidden?.button && (
               <Link
-                className={CN(style.link)}
+                className={CN(style.button)}
                 href="#contactForm"
                 scroll={true}
               >
@@ -111,14 +120,17 @@ export default function ServiceComponent({
             <CardTitle className={style.title}>Cybersecurity</CardTitle>
             <CardParagraph className={style.paragraph}>
               Integração de sistemas e implementação de técnicas seguindo os
-              padrões de segurança e proteção de dados da{" "}
+              padrões de segurança e proteção de dados da
               <Link
                 className={style.link}
                 href={"https://www.owasp.org/"}
                 target="_blank"
               >
                 OWASP Foundation
-              </Link>{" "}
+                <sup>
+                  <RxExternalLink className="externalLinkIcon" />
+                </sup>
+              </Link>
               e da
               <Link
                 className={style.link}
@@ -126,6 +138,9 @@ export default function ServiceComponent({
                 target="_blank"
               >
                 Autoridade Nacional de Proteção de Dados
+                <sup>
+                  <RxExternalLink className="externalLinkIcon" />
+                </sup>
               </Link>
               .
             </CardParagraph>

@@ -11,9 +11,14 @@
 @tailwind components;
 
 @layer utilities {
-  .link .caption {
-    @apply font-display tracking-[.1rem] text-blue-600
-      hover:underline hover:underline-offset-2 visited:text-violet-600
-      disabled:text-zinc-500;
+  .link {
+    @apply text-cyanBlue-400 dark:text-green-500 hover:underline hover:underline-offset-2
+      italic font-semibold tracking-[.035rem];
+    .caption {
+      @apply text-cyanBlue-400 dark:text-green-500 hover:underline hover:underline-offset-2;
+    }
+  }
+  .caption {
+    @apply font-display font-semibold tracking-[.012rem];
   }
 }

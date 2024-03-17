@@ -3,12 +3,18 @@ import { HTMLAttributes, HTMLProps, ReactNode } from "react";
 
 type CardComponentProps = {
   className?: string;
+  children: ReactNode;
 } & HTMLAttributes<HTMLElement>;
 
 export default function CardComponent({
   className,
+  children,
   ...rest
 }: CardComponentProps) {
-  const style = ``;
-  return <div {...rest} className={CN(style, className)}></div>;
+  const style = `h-fit flex flex-col p-2`;
+  return (
+    <div {...rest} className={CN(style, className)}>
+      {children}
+    </div>
+  );
 }
