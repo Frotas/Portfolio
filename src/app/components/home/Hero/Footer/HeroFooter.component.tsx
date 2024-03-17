@@ -12,7 +12,7 @@ export default function HeroFooter({
   quote,
 }: HeroFooterProps) {
   const style = `
-    [&_q]:pb-4 [&_strong]:pb-4 text-wrap-pretty flex flex-col
+    [&_q]:pb-4 [&_strong]:pb-4 text-pretty flex flex-col
     font-paragraph py-4 text-center text-black dark:text-white
   `;
   return (

@@ -31,7 +31,6 @@ export default function ThemeSwitchComponent({
       [&_input[type='checkbox']:checked+.innerLabel]:after:left-[4.125rem]
       [&_input[type='checkbox']:checked+.innerLabel]:after:bg-cyprus-900
       [&_input[type='checkbox']:checked+.innerLabel]:after:text-white
-
       [&_input[type='checkbox']:checked+.innerLabel]:before:content-[attr(data-off)]
       [&_input[type='checkbox']:checked+.innerLabel]:before:left-[1.125rem]
       [&_input[type='checkbox']:checked+.innerLabel]:before:right-auto
@@ -41,12 +40,12 @@ export default function ThemeSwitchComponent({
     `,
     label: {
       wrapper: `
-        label font-display text-[13pt] text-center 
+        label font-display text-[13pt] text-center
       `,
       innerLabel: `
-        innerLabel
+        innerLabel border border-black/50
         cursor-pointer font-[500]
-        block w-[8.575rem] h-[1.875rem] bg-slate-300 text-black rounded-[1.625rem]
+        block w-[8.57rem] h-[1.87rem] bg-slate-300 text-black rounded-[1.625rem]
         overflow-hidden relative transition-all duration-[.3s] ease-in
         
         after:w-[4.375rem] after:h-[1rem]

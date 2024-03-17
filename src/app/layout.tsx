@@ -21,11 +21,8 @@ export default function RootLayout({
       <html lang="pt-BR" data-theme={"light"}>
         <body
           className={`
-        font-Roboto overflow-x-hidden bg-gradient-to-tl from-[hsl(210,22%,81%)] 
-        via-[hsl(210,29%,73%)] to-[hsl(210,41%,63%)] dark:from-[hsl(216,65%,11%)]
-        dark:via-[hsl(216,64%,23%)] dark:to-[hsl(216,65%,35%)] bg-fixed transition-all
-        ease-out [&_*>.typeAnimation]:data-[menuOpen=true]:invisible
-        [&_*>.typeAnimation]:data-[menuOpen=false]:visible 
+        font-Roboto overflow-x-hidden bg-gradient-to-bl from-rockBlue-100 to-rockBlue-500
+      dark:from-cyprus-600 dark:to-rockBlue-900 bg-fixed transition-all ease-out
         md:data-[menuOpen=true]:!overflow-y-scroll data-[menuOpen=true]:overflow-y-hidden
       `}
         >
