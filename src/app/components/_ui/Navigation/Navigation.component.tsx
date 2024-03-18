@@ -1,11 +1,20 @@
 "use client";
 import Image, { ImageProps } from "next/image";
+import Link from "next/link";
 import CN from "@app/helpers/ClassHelper";
 import { Menu, Close } from "@app/app/components/_ui/Assets";
 import { Button } from "../Button";
-import { HTMLAttributes, ReactNode, SyntheticEvent, useState } from "react";
-import Link from "next/link";
+import {
+  HTMLAttributes,
+  ReactNode,
+  SyntheticEvent,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { ThemeSwitch } from "../ThemeSwitch";
+import { ActiveLinkContext } from "@app/app/context/ActiveLink.context";
 
 type NavigationComponentProps = {
   className?: string;
@@ -17,10 +26,28 @@ export default function NavigationComponent({
 }: NavigationComponentProps) {
   const { ...image } = rest;
   const [menuState, setMenuState] = useState<boolean>(false); // Mobile Menu State
-  const [active, setActive] = useState<string>("Sobre"); // Navigation Link Style State
+  const [active, setActive] = useState<string | null>("about"); // Navigation Link Style State
+
+  useEffect(() => {
+    const anchors = document.querySelectorAll('a[href^="#"]');
+    anchors.forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(
+          anchor.getAttribute("href") as string
+        ) as HTMLElement;
+        const headerOffset = 188; // Ajuste este valor para o tamanho do seu cabeçalho
+        const elementPosition = target ? target?.offsetTop : 0;
+        const offsetPosition = elementPosition - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      });
+    });
+  }, [active]);
 
   const openMenu = (e: SyntheticEvent) => {
-    // Mobile Menu Open Logic
     e.preventDefault;
     setMenuState(!menuState);
     const body = document.querySelector("body") as HTMLElement;
@@ -28,7 +55,6 @@ export default function NavigationComponent({
   };
 
   const itemHandleClick = (item: string) => {
-    // Navigation Link Style Logic
     setActive(item!);
     const menuClose = document.querySelector(
       "button#btn-menu"
@@ -39,15 +65,16 @@ export default function NavigationComponent({
 
   const style = {
     wrapper: `
-      w-full flex flex-row items-center justify-between px-4 bg-zinc-500/25
-      backdrop-filter backdrop-blur-[10px] shadow shadow-black/20 sticky top-0 gap-12 md:!px-16
+      w-full flex flex-row items-center justify-between px-4 py-2 z-[100] bg-zinc-500/25
+      backdrop-filter backdrop-blur-[10px] shadow shadow-black/20 sticky top-0 gap-12
+      md:!px-16 md:!py-4
       [&_div:nth-child(1)]:z-[100] [&_button:nth-child(3)]:z-[100]
     `,
     nav: `
       w-[100vw] h-[100vh] absolute top-0 right-0 transition-transform duration-1000 ease-in
-      bg-darkBlue-600 flex flex-col-reverse items-center justify-center gap-2
+      bg-darkBlue-600/90 flex flex-col-reverse items-center justify-center gap-2
       md:!w-full md:!h-full md:!translate-x-0 md:!relative md:!bg-transparent
-      md:!flex-row md:!gap-8
+      md:!flex-row md:!gap-8 z-[100]
 
       data-[open=true]:translate-x-0
       data-[open=false]:translate-x-full
@@ -66,7 +93,7 @@ export default function NavigationComponent({
       md:w-full md:last:!rounded-r-full md:first:!rounded-l-full md:!text-black md:hover:!text-white
       md:hover:last:!rounded-r-full md:hover:first:!rounded-l-full md:!py-2
       
-      data-[selected=true]:bg-darkSlateGray-500/70 data-[selected=true]:first:rounded-t-lg
+      data-[selected=true]:bg-cyanBlue-500/70 data-[selected=true]:first:rounded-t-lg
       data-[selected=true]:last:rounded-b-lg data-[selected=true]:first:hover:rounded-t-lg
       data-[selected=true]:last:hover:rounded-b-lg data-[selected=true]:md:!last:rounded-r-full
       data-[selected=true]:md:!first:rounded-l-full data-[selected=true]:md:!text-white
@@ -85,12 +112,7 @@ export default function NavigationComponent({
     children: ReactNode;
     active: boolean | undefined;
   } & HTMLAttributes<HTMLLIElement>) => (
-    <li
-      data-selected={active}
-      {...rest}
-      className={CN(style.item, className)}
-      // className={CN(className, active ? style.item.active : style.item.disable)}
-    >
+    <li data-selected={active} {...rest} className={CN(style.item, className)}>
       {children}
     </li>
   );
@@ -119,8 +141,8 @@ export default function NavigationComponent({
             </Link>
           </NavTab>
           <NavTab
-            active={active === "skills"}
-            onClick={(e) => itemHandleClick("skills")}
+            active={active === "hardSkills"}
+            onClick={(e) => itemHandleClick("hardSkills")}
           >
             <Link className={style.link} href="#hardSkills" scroll={true}>
               Habilidades
