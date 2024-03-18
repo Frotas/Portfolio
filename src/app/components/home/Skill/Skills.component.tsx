@@ -1,5 +1,5 @@
 import CN from "@app/helpers/ClassHelper";
-import { ElementType, HTMLAttributes, ReactNode } from "react";
+import { forwardRef, HTMLAttributes, ReactNode } from "react";
 
 type SkillComponentProps = {
   className?: string;
@@ -12,19 +12,16 @@ type SkillComponentProps = {
     };
   };
 } & HTMLAttributes<HTMLElement>;
-export default function SkillComponent({
-  title,
-  className,
-  children,
-  options,
-  ...rest
-}: SkillComponentProps) {
-  const style = `
+const SkillComponent = forwardRef<HTMLElement, SkillComponentProps>(
+  ({ children, className, ...rest }, ref) => {
+    const style = `
     w-full flex flex-row flex-wrap gap-8 justify-center
   `;
-  return (
-    <section {...rest} className={CN(style, className)}>
-      {children}
-    </section>
-  );
-}
+    return (
+      <section {...rest} ref={ref} className={CN(style, className)}>
+        {children}
+      </section>
+    );
+  }
+);
+export default SkillComponent;

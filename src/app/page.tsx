@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -19,7 +21,6 @@ import {
 } from "./components/_ui/Assets";
 import { Title } from "./components/_ui/Typography";
 import { Icon } from "./components/_ui/Icon";
-import { RxExternalLink } from "react-icons/rx";
 
 export default function Home(): ReactNode {
   return (
@@ -43,11 +44,12 @@ export default function Home(): ReactNode {
             },
           },
         ]}
+        className="pageSection"
       />
       <Title className="text-center" heading="h2">
         Hard Skills
       </Title>
-      <Skill.Root id="hardSkills">
+      <Skill.Root id="hardSkills" className="pageSection">
         <Icon icon={Java} caption="Java" />
         <Icon icon={JavaScript} caption="JavaScript" />
         <Icon icon={TypeScript} caption="TypeScript" />
@@ -58,7 +60,7 @@ export default function Home(): ReactNode {
       <Title className="text-center" heading="h2">
         Meios de Contatos
       </Title>
-      <Contact id="contact">
+      <Contact id="contact" className="pageSection">
         <Link
           className="link"
           href="mailto:gs.dev.oficial@gmail.com"

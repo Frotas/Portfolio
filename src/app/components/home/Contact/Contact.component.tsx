@@ -1,6 +1,6 @@
 "use client";
 
-import { HTMLAttributes, ReactNode } from "react";
+import { HTMLAttributes, ReactNode, forwardRef } from "react";
 import CN from "@app/helpers/ClassHelper";
 
 type FooterComponentProps = {
@@ -8,18 +8,17 @@ type FooterComponentProps = {
   children: ReactNode;
 } & HTMLAttributes<HTMLElement>;
 
-export default function FooterComponent({
-  className,
-  children,
-  ...rest
-}: FooterComponentProps) {
-  const style = `flex flex-row flex-wrap gap-8 justify-center`;
+const FooterComponent = forwardRef<HTMLElement, FooterComponentProps>(
+  ({ children, className, ...rest }, ref) => {
+    const style = `flex flex-row flex-wrap gap-8 justify-center`;
 
-  return (
-    <>
-      <section {...rest} className={CN(style, className)}>
-        {children}
-      </section>
-    </>
-  );
-}
+    return (
+      <>
+        <section {...rest} ref={ref} className={CN(style, className)}>
+          {children}
+        </section>
+      </>
+    );
+  }
+);
+export default FooterComponent;
