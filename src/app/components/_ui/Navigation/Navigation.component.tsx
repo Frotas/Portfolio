@@ -14,7 +14,6 @@ import {
   useState,
 } from "react";
 import { ThemeSwitch } from "../ThemeSwitch";
-import { ActiveLinkContext } from "@app/app/context/ActiveLink.context";
 
 type NavigationComponentProps = {
   className?: string;
