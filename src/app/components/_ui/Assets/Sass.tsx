@@ -7,6 +7,7 @@ export default function SvgComponent({ className, ...props }: IconType) {
     w-auto h-auto max-w-[64px] max-h-[64px]
     [&_:nth-child(1n)]:fill-[#F4F2ED]
     [&_:nth-child(1n)]:dark:fill-[#242938]
+    [&_:nth-child(2)]:mask-type-luminance
   `;
   return (
     <svg
@@ -23,9 +24,6 @@ export default function SvgComponent({ className, ...props }: IconType) {
         x={7}
         y={13}
         maskUnits="userSpaceOnUse"
-        style={{
-          maskType: "luminance",
-        }}
       >
         <path fill="#fff" d="M7 13.25h50v37.477H7V13.25Z" />
       </mask>

@@ -8,9 +8,7 @@ import {
   HTMLAttributes,
   ReactNode,
   SyntheticEvent,
-  useContext,
   useEffect,
-  useRef,
   useState,
 } from "react";
 import { ThemeSwitch } from "../ThemeSwitch";
@@ -49,11 +47,13 @@ export default function NavigationComponent({
   const openMenu = (e: SyntheticEvent) => {
     e.preventDefault;
     setMenuState(!menuState);
+    const html = document.querySelector("html") as HTMLElement;
+    html.setAttribute("data-menu-open", `${!menuState}`);
     const body = document.querySelector("body") as HTMLElement;
-    body.setAttribute("data-menuOpen", `${!menuState}`);
+    body.setAttribute("data-menu-open", `${!menuState}`);
   };
 
-  const itemHandleClick = (item: string) => {
+  const navTabHandleClick = (item: string) => {
     setActive(item!);
     const menuClose = document.querySelector(
       "button#btn-menu"
@@ -64,21 +64,25 @@ export default function NavigationComponent({
 
   const style = {
     wrapper: `
-      w-full flex flex-row items-center justify-between px-4 py-2 z-[100] bg-zinc-500/25
-      backdrop-filter backdrop-blur-[10px] shadow shadow-black/20 sticky top-0 gap-12
-      md:!px-16 md:!py-4
-      [&_div:nth-child(1)]:z-[100] [&_button:nth-child(3)]:z-[100]
+      wrapper-navigation
+      w-full flex flex-row items-center justify-between gap-12 px-4 py-2 z-[100] bg-zinc-500/25
+      backdrop-filter backdrop-blur-[10px] shadow shadow-black/20 sticky top-0
+      md:!px-16 md:!py-4 
+      [&_:nth-child(1)]:z-[101] [&_:nth-child(3)]:z-[101]
     `,
     nav: `
+      navigation bg-darkBlue-600/90
       w-[100vw] h-[100vh] absolute top-0 right-0 transition-transform duration-1000 ease-in
-      bg-darkBlue-600/90 flex flex-col-reverse items-center justify-center gap-2
+      flex flex-col-reverse items-center justify-center gap-2
       md:!w-full md:!h-full md:!translate-x-0 md:!relative md:!bg-transparent
-      md:!flex-row md:!gap-8 z-[100]
-
+      md:!flex-row md:!gap-8
+      
+      data-[open=true]:[&_>*]:z-[100]
       data-[open=true]:translate-x-0
       data-[open=false]:translate-x-full
       `,
     list: `
+      navigation-list
       w-full h-fit divide-y divide-darkSlateGray/35
       flex flex-col items-center justify-center
       
@@ -86,6 +90,7 @@ export default function NavigationComponent({
       md:border md:border-2 md:m-auto md:border-darkSlateGray/35 md:rounded-full
     `,
     item: `
+      navigation-list-item
       w-[50%] text-center text-white py-4 hover:bg-rockBlue-500/70 hover:text-black
       hover:font-semibold hover:first:rounded-t-lg hover:last:rounded-b-lg 
       
@@ -97,8 +102,8 @@ export default function NavigationComponent({
       data-[selected=true]:last:hover:rounded-b-lg data-[selected=true]:md:!last:rounded-r-full
       data-[selected=true]:md:!first:rounded-l-full data-[selected=true]:md:!text-white
     `,
-    link: `block w-full h-full py-4 md:!py-0`,
-    button: `h-fit p-3 md:sr-only`,
+    link: `navigation-list-item-link block w-full h-full py-4 md:!py-0`,
+    button: `wrapper-navigation-btnMenu h-fit p-3 md:sr-only`,
   };
 
   const NavTab = ({
@@ -119,39 +124,59 @@ export default function NavigationComponent({
   return (
     <header className={style.wrapper}>
       <div id="nav-brand">
-        <Image {...image} />
+        <Image {...image} alt="GS.DEV Logo" />
       </div>
       <nav data-open={menuState} id="navbar" className={style.nav}>
         <ul className={CN(style.list)}>
           <NavTab
             active={active === "about"}
-            onClick={(e) => itemHandleClick("about")}
+            onClick={(e) => navTabHandleClick("about")}
           >
-            <Link className={style.link} href="#about" scroll={true}>
+            <Link
+              aria-label="Link de Navegação - Seção Sobre"
+              className={style.link}
+              href="#about"
+              scroll={true}
+            >
               Sobre
             </Link>
           </NavTab>
           <NavTab
             active={active === "services"}
-            onClick={(e) => itemHandleClick("services")}
+            onClick={(e) => navTabHandleClick("services")}
           >
-            <Link className={style.link} href="#services" scroll={true}>
+            <Link
+              aria-label="Link de Navegação - Seção de Serviços"
+              className={style.link}
+              href="#services"
+              scroll={true}
+            >
               Serviços
             </Link>
           </NavTab>
           <NavTab
             active={active === "hardSkills"}
-            onClick={(e) => itemHandleClick("hardSkills")}
+            onClick={(e) => navTabHandleClick("hardSkills")}
           >
-            <Link className={style.link} href="#hardSkills" scroll={true}>
+            <Link
+              aria-label="Link de Navegação - Seção de Habilidades Técnicas"
+              className={style.link}
+              href="#hardSkills"
+              scroll={true}
+            >
               Habilidades
             </Link>
           </NavTab>
           <NavTab
             active={active === "contact"}
-            onClick={(e) => itemHandleClick("contact")}
+            onClick={(e) => navTabHandleClick("contact")}
           >
-            <Link className={style.link} href="#contact" scroll={true}>
+            <Link
+              aria-label="Link de Navegação - Seção de Contato"
+              className={style.link}
+              href="#contact"
+              scroll={true}
+            >
               Meios de Contato
             </Link>
           </NavTab>
@@ -159,12 +184,13 @@ export default function NavigationComponent({
         <ThemeSwitch />
       </nav>
       <Button
+        type="button"
         id="btn-menu"
         className={style.button}
-        type="button"
         variant="outlined"
         color="blue"
         onClick={openMenu}
+        title="Mobile menu button"
       >
         {!menuState && <Menu />}
         {menuState && <Close />}

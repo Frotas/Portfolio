@@ -22,13 +22,13 @@ const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
       wrapper: `md:flex md:flex-col`,
       sections: {
         about: `
-      md:w-[50%] md:m-auto md:text-balance md:[&_.title]:text-[20pt] 
-      md:[&_.title]:text-[22pt]
-      md:[&_.subtitle]:text-[18pt]
-      md:[&_.paragraphWrapper>.paragraph]:text-[13pt] md:[&_.paragraphWrapper>.paragraph]:font-light
-      md:[&_.paragraphWrapper>.paragraph]:text-center
-      [&_.linkIcon]:text-[9pt] [&_.linkIcon]:inline-block
-      `,
+          md:w-[50%] md:m-auto md:text-balance md:[&_.title]:text-[20pt] 
+          md:[&_.title]:text-[22pt]
+          md:[&_.subtitle]:text-[18pt]
+          md:[&_.paragraphWrapper>.paragraph]:text-[13pt] md:[&_.paragraphWrapper>.paragraph]:font-light
+          md:[&_.paragraphWrapper>.paragraph]:text-center
+          [&_.link>sup]:z-[-100] [&_.linkIcon]:text-[9pt] [&_.linkIcon]:inline-block
+        `,
         profile: {
           wrapper: `md:my-2`,
           image: `
@@ -46,23 +46,6 @@ const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
     return (
       <section {...rest} ref={ref} className={CN(style.wrapper, className)}>
         <Header className={style.sections.about}>
-          {/* 👋 sou o Guilherme, tenho formação técnica em Analise em
-        Desenvolvimento de Sistemas pelo Centro Educacional Paula Souza.
-        Atuo como desenvolvedor Back-End e Front-End e realizo serviços
-        de Cyber Security para startups, pequenas e medias empresas. */}
-          {/*
-          - [?] No texto inicial, a primeira coisa que li foi sua formação e não oque tu faz.
-            Mudar essa ordem pode ser interessante.
-            (
-              projetos feitos, com muitas imagens bem bonitas e fáceis de entender o que é
-              para que serve. Recrutadores irão querer saber quais tecnologias usou em cada
-              projeto
-            )
-          - [X] No modo Dark, o site tem textos que ficam pretos, dificultando a visualização e
-            leitura, ajude o usuário.
-          - [?] É bom ir atrás de paletas de cores, muitas vezes só mudar o tom das cores não fará
-            tudo combinar.
-        */}
           <Title
             heading="h2"
             className="title font-title font-semibold uppercase text-[18pt] pb-4 "
@@ -93,6 +76,7 @@ const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
               Minha experiência abrange desenvolvimento tanto front-end quanto
               back-end, utilizando linguagens como{" "}
               <Link
+                aria-label="Alura Artigos - O que é JavaScript?"
                 className="link"
                 href={`https://www.alura.com.br/artigos/javascript`}
                 target="_blank"
@@ -104,6 +88,7 @@ const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
               </Link>
               ,{" "}
               <Link
+                aria-label="Alura Artigos - O que é Python?"
                 className="link"
                 href={`https://www.alura.com.br/artigos/python`}
                 target="_blank"
@@ -115,6 +100,7 @@ const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
               </Link>{" "}
               e{" "}
               <Link
+                aria-label="Alura Artigos - O que é Java?"
                 className="link"
                 href={`https://www.alura.com.br/artigos/java`}
                 target="_blank"
@@ -126,6 +112,7 @@ const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
               </Link>
               , junto com frameworks como{" "}
               <Link
+                aria-label="Alura Artigos - O que é ReactJS?"
                 className="link"
                 href={`https://www.alura.com.br/artigos/react-js`}
                 target="_blank"
@@ -137,6 +124,7 @@ const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
               </Link>
               ,{" "}
               <Link
+                aria-label="Alura Artigos - O que é NextJS?"
                 className="link"
                 href={`https://www.alura.com.br/artigos/next-js`}
                 target="_blank"
@@ -148,6 +136,7 @@ const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
               </Link>
               ,{" "}
               <Link
+                aria-label="Alura Artigos - O que é NodeJS?"
                 className="link"
                 href={`https://www.alura.com.br/artigos/node-js`}
                 target="_blank"
@@ -159,6 +148,7 @@ const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
               </Link>{" "}
               e{" "}
               <Link
+                aria-label="Alura Artigos - O que é Spring Framework?"
                 className="link"
                 href={`https://www.alura.com.br/artigos/spring-conheca-esse-framework-java`}
                 target="_blank"
@@ -174,6 +164,7 @@ const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
               Estou comprometido em combinar minhas habilidades técnicas com uma
               compreensão sólida de práticas de{" "}
               <Link
+                aria-label="Kaspersky Artigos - O que é Segurança Cibernética?"
                 href={`https://www.kaspersky.com.br/resource-center/definitions/what-is-cyber-security`}
                 className="link"
               >
@@ -192,7 +183,7 @@ const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
             width={152}
             height={152}
             src={`https://media.licdn.com/dms/image/D4D03AQElhivS7Oi73w/profile-displayphoto-shrink_400_400/0/1666029039079?e=1715817600&v=beta&t=m_O0BUOoslbDcGd26f8Fl_lOmYWIFw2oaGY8OvR5_-U`}
-            alt="Imagem de Perfil."
+            alt="Imagem de perfil do LinkedIn."
           />
         </Profile>
         <Quoting

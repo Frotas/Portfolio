@@ -79,6 +79,7 @@ export default function ThemeSwitchComponent({
             id="themeSwitch"
             type="checkbox"
             name="themeSwitch"
+            placeholder="Theme Switch"
             className={style.input}
             onChange={toggleTheme}
             value={1}

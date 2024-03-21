@@ -10,6 +10,25 @@
 @tailwind utilities;
 @tailwind components;
 
+html {
+  &[data-menu-open="false"] {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  &[data-menu-open="true"] {
+    overflow: hidden;
+  }
+  > body {
+    &[data-menu-open="false"] {
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    &[data-menu-open="true"] {
+      overflow: hidden;
+    }
+  }
+}
+
 @layer utilities {
   .link {
     @apply text-cyanBlue-400 dark:text-green-500 hover:underline hover:underline-offset-2
@@ -20,5 +39,13 @@
   }
   .caption {
     @apply font-display font-semibold tracking-[.012rem];
+  }
+  .mask-type {
+    &-luminance {
+      mask-type: luminance;
+    }
+    &-alpha {
+      mask-type: alpha;
+    }
   }
 }

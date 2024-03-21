@@ -5,10 +5,11 @@ import CN from "@app/helpers/ClassHelper";
 export default function NextJS({ className }: IconType) {
   const style = `
     w-auto h-auto max-w-[64px] max-h-[64px]
-    [&_:nth-child(1n)]:max-w-[64px]
-    [&_:nth-child(1n)]:max-h-[64px]
-    [&_:nth-child(1n)]:fill-[#F4F2ED]
-    [&_:nth-child(1n)]:dark:fill-[#242938]
+    [&_:nth-child(1)]:max-w-[64px]
+    [&_:nth-child(1)]:max-h-[64px]
+    [&_:nth-child(1)]:fill-[#F4F2ED]
+    [&_:nth-child(1)]:dark:fill-[#242938]
+    [&_:nth-child(2)]:mask-type-luminance
   `;
   return (
     <svg
@@ -24,9 +25,6 @@ export default function NextJS({ className }: IconType) {
         x={8}
         y={8}
         maskUnits="userSpaceOnUse"
-        style={{
-          maskType: "luminance",
-        }}
       >
         <path
           fill="#fff"
