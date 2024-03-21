@@ -73,6 +73,7 @@ const ServiceComponent = forwardRef<HTMLElement, ServiceComponentProps>(
               </CardParagraph>
               {!options![0].hidden?.button && (
                 <Link
+                  aria-label="Contratar Serviço de Back-End"
                   className={CN(style.button)}
                   href="#contactForm"
                   scroll={true}
@@ -99,6 +100,7 @@ const ServiceComponent = forwardRef<HTMLElement, ServiceComponentProps>(
               </CardParagraph>
               {!options![0].hidden?.button && (
                 <Link
+                  aria-label="Contratar Serviço de Front-End"
                   className={CN(style.button)}
                   href="#contactForm"
                   scroll={true}
@@ -120,6 +122,7 @@ const ServiceComponent = forwardRef<HTMLElement, ServiceComponentProps>(
                 Integração de sistemas e implementação de técnicas seguindo os
                 padrões de segurança e proteção de dados da
                 <Link
+                  aria-label="Redirecionamento para o site da Fundação OWASP."
                   className={style.link}
                   href={"https://www.owasp.org/"}
                   target="_blank"
@@ -131,6 +134,7 @@ const ServiceComponent = forwardRef<HTMLElement, ServiceComponentProps>(
                 </Link>
                 e da
                 <Link
+                  aria-label="Redirecionamento para o site da ANPD."
                   className={style.link}
                   href={"https://www.gov.br/anpd/pt-br"}
                   target="_blank"
@@ -144,6 +148,7 @@ const ServiceComponent = forwardRef<HTMLElement, ServiceComponentProps>(
               </CardParagraph>
               {!options![0].hidden?.button && (
                 <Link
+                  aria-label="Contratar Serviço de Cybersecurity"
                   className={CN(style.button)}
                   href="#contactForm"
                   scroll={true}

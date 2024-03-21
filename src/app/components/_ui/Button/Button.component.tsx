@@ -25,6 +25,7 @@ type ButtonComponentProps = {
   variant?: ButtonVariants;
   color?: ButtonColors;
   children: ReactNode;
+  type?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export default function ButtonComponent({
@@ -92,6 +93,7 @@ export default function ButtonComponent({
     <>
       <button
         {...rest}
+        type={type}
         className={CN(style, buttonVariants[variant][color], className)}
       >
         {!!children && children}

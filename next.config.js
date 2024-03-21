@@ -23,6 +23,17 @@ const nextConfig = {
       }
     ],
   },
+  headers: () => [
+    {
+      source: '/',
+      headers: [
+        {
+          key: 'X-Content-Type-Options',
+          value: 'nosniff',
+        },
+      ],
+    },
+  ]
 };
 
 module.exports = nextConfig;

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 
 import Skill from "./components/home/Skill";
 import { Hero } from "./components/home/Hero";
@@ -26,7 +26,9 @@ export default function Home(): ReactNode {
   return (
     <main
       id="content"
-      className={`px-4 pb-16 md:!pb-12 md:!px-16 animate-opacity transition-opacity`}
+      className={`
+        px-4 pb-16 md:!pb-12 md:!px-16 animate-opacity transition-opacity
+      `}
     >
       <Hero id="about" />
       <Title className="text-center" heading="h2">
@@ -60,29 +62,38 @@ export default function Home(): ReactNode {
       <Title className="text-center" heading="h2">
         Meios de Contatos
       </Title>
-      <Contact id="contact" className="pageSection">
+      <Contact id="contact" className="contactSection">
         <Link
           className="link"
-          href="mailto:gs.dev.oficial@gmail.com"
+          aria-label="GMail"
+          href={"mailto:gs.dev.oficial@gmail.com"}
           target="_blank"
         >
           <Icon icon={GMail} caption="GMail" />
         </Link>
         <Link
           className="link"
-          href="https://www.github.com/frotas/"
+          aria-label="Github"
+          href={"https://www.github.com/frotas/"}
           target="_blank"
         >
           <Icon icon={GitHub} caption="GitHub" />
         </Link>
         <Link
           className="link"
-          href="https://www.linkedin.com/in/guilherme-af-sales/"
+          aria-label="LinkedIn"
+          href={"https://www.linkedin.com/in/guilherme-af-sales/"}
           target="_blank"
         >
           <Icon icon={LinkedIn} caption="LinkedIn" />
         </Link>
-        <Link className="link" href="tel:+5511981028442">
+        <Link
+          className="link"
+          aria-label="WhatsApp"
+          href={
+            "https://wa.me/5511981028442?Tenho%20interesse%20em%20contratar%20os%20seus%20serviços"
+          }
+        >
           <Icon icon={WhatsApp} caption="WhatsApp" />
         </Link>
       </Contact>
