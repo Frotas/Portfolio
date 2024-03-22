@@ -67,7 +67,7 @@ export default function RootLayout({
       <html lang="pt" data-theme={"light"} data-menu-open={false}>
         <body
           className={`
-            data-[menu-open=true]:overflow-hidden
+            data-[menu-open=true]:overflow-hidden overflow-x-hidden
             font-Roboto bg-gradient-to-bl from-rockBlue-100 to-rockBlue-500
           dark:from-cyprus-600 dark:to-rockBlue-900 bg-fixed transition-all ease-out
           `}
