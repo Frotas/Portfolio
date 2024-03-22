@@ -15,7 +15,8 @@ import { ThemeSwitch } from "../ThemeSwitch";
 
 type NavigationComponentProps = {
   className?: string;
-} & ImageProps;
+} & HTMLAttributes<HTMLElement> &
+  ImageProps;
 
 export default function NavigationComponent({
   className,
@@ -64,23 +65,23 @@ export default function NavigationComponent({
 
   const style = {
     wrapper: `
-      wrapper-navigation
-      w-full flex flex-row items-center justify-between gap-12 px-4 py-2 z-[100] bg-zinc-500/25
-      backdrop-filter backdrop-blur-[10px] shadow shadow-black/20 sticky top-0
-      md:!px-16 md:!py-4 
+      wrapper-navigation flex flex-row items-center justify-between gap-12 px-4 py-2 sticky
+      top-0 w-full z-[100] bg-zinc-500/25 backdrop-filter backdrop-blur-[10px] shadow shadow-black/20
+      md:!px-16 md:!py-4
       [&_:nth-child(1)]:z-[101] [&_:nth-child(3)]:z-[101]
     `,
     nav: `
       navigation bg-darkBlue-600/90
-      w-[100vw] h-[100vh] absolute top-0 right-0 transition-transform duration-1000 ease-in
+      w-[100vw] h-[100vh] absolute top-0 right-[-100px] transition-transform duration-1000 ease-in
       flex flex-col-reverse items-center justify-center gap-2
-      md:!w-full md:!h-full md:!translate-x-0 md:!relative md:!bg-transparent
+      md:!w-full md:!h-full md:!right-0 md:!translate-x-0 md:!relative md:!bg-transparent
       md:!flex-row md:!gap-8
       
       data-[open=true]:[&_>*]:z-[100]
+      data-[open=true]:right-0
       data-[open=true]:translate-x-0
       data-[open=false]:translate-x-full
-      `,
+    `,
     list: `
       navigation-list
       w-full h-fit divide-y divide-darkSlateGray/35
@@ -122,7 +123,7 @@ export default function NavigationComponent({
   );
 
   return (
-    <header className={style.wrapper}>
+    <header {...rest} className={CN(style.wrapper)}>
       <div id="nav-brand">
         <Image {...image} alt="GS.DEV Logo" />
       </div>
