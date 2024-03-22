@@ -1,14 +1,10 @@
 "use client";
-import Image, { ImageProps } from "next/image";
 import CN from "@app/helpers/ClassHelper";
-import { Menu, Close } from "@app/app/components/_ui/Assets";
-import { Button } from "../Button";
-import { HTMLAttributes, ReactNode, SyntheticEvent, useState } from "react";
-import Link from "next/link";
+import { HTMLAttributes, ReactElement } from "react";
 
 type FooterComponentProps = {
   className?: string;
-  children: ReactNode;
+  children: ReactElement;
 } & HTMLAttributes<HTMLElement>;
 
 export default function FooterComponent({
@@ -17,8 +13,8 @@ export default function FooterComponent({
   ...rest
 }: FooterComponentProps) {
   const style = `
-    h-28 font-display text-white bg-cyprus-500/70 flex flex-row flex-wrap
-    justify-center items-center tracking-[.12rem]
+    h-28 font-display text-white bg-cyprus-500/90 dark:bg-cyprus-500/70 flex flex-row flex-wrap
+    justify-center items-center tracking-[.12rem] shadow shadow-black/35
   `;
   return (
     <footer {...rest} className={CN(style, className)}>

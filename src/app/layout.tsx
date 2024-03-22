@@ -73,6 +73,8 @@ export default function RootLayout({
           `}
           data-menu-open={false}
         >
+          <Navigation src={logo} alt="Logo Icon" />
+          {children}
           <Analytics
             mode={
               process.env.ENVIRONMENT === "Production"
@@ -80,8 +82,6 @@ export default function RootLayout({
                 : "development"
             }
           />
-          <Navigation src={logo} alt="Logo Icon" />
-          {children}
           <Footer>
             <p>
               Created by GS.DEV
