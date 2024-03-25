@@ -81,7 +81,7 @@ export default function RootLayout({
             options={{
               style: {
                 nav: `
-                  lg:!w-full lg:!h-fit lg:gap-8 lg:!flex-row lg:!relative lg:!right-0
+                  lg:!w-full lg:!h-fit lg:!gap-10 lg:!flex-row lg:!relative lg:!right-0
                   lg:!translate-x-0 lg:!bg-transparent
                 `,
                 navList: `
