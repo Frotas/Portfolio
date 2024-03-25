@@ -45,12 +45,6 @@ const ServiceComponent = forwardRef<HTMLElement, ServiceComponentProps>(
       link: `
         max-w-fit px-1 font-semibold link inline-flex items-baseline
         [&_.externalLinkIcon]:ml-1
-        [&_.externalLinkIconAdjust]:absolute
-        [&_.externalLinkIconAdjust]:top-[31px]
-        [&_.externalLinkIconAdjust]:left-[-90px]
-
-        md:[&_.externalLinkIconAdjust]:top-[21px]
-        md:[&_.externalLinkIconAdjust]:left-[-58px]
       `,
       button: `
         uppercase text-center text-white font-display font-semibold
@@ -122,7 +116,7 @@ const ServiceComponent = forwardRef<HTMLElement, ServiceComponentProps>(
               {!options![0].hidden?.icon && (
                 <CardIcon className={style.icon} icon={Security} />
               )}
-              <CardTitle className={style.title}>Cybersecurity</CardTitle>
+              <CardTitle className={style.title}>CyberSecurity</CardTitle>
               <CardParagraph className={style.paragraph}>
                 Integração de sistemas e implementação de técnicas seguindo os
                 padrões de segurança e proteção de dados da
