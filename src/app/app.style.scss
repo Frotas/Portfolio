@@ -10,9 +10,29 @@
 @tailwind utilities;
 @tailwind components;
 
-html {
-  overflow-x: hidden;
+@supports (-webkit-text-size-adjust: 100%) {
+  :host,
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+}
+@supports (-webkit-tap-highlight-color: transparent) {
+  :host,
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+@supports (text-size-adjust: 100%) {
+  :host,
+  html {
+    text-size-adjust: 100%;
+  }
+}
+
+html,
+body {
   overflow-y: auto;
+  overflow-x: hidden;
   &[data-menu-open="true"] {
     overflow: hidden;
   }
