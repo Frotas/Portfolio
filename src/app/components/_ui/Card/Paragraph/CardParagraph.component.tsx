@@ -13,8 +13,8 @@ export default function CardParagraphComponent({
   ...rest
 }: CardParagraphComponentProps) {
   const style = `
-    font-paragraph text-center text-pretty text-[12pt]
-    text-black dark:text-white
+    font-paragraph font-light text-center text-pretty text-[12pt]
+    text-black dark:text-white lg:!text-[14pt]
   `;
   return (
     <Paragraph {...rest} className={CN(style, className)}>

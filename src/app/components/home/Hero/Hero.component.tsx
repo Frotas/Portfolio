@@ -22,7 +22,9 @@ const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
       wrapper: `lg:flex lg:flex-col`,
       sections: {
         about: `
-          lg:w-[70%] lg:m-auto lg:text-balance 
+          lg:w-[80%] lg:m-auto lg:text-balance 
+          lg:[&_.title]:text-[20pt]
+          lg:[&_.subtitle]:text-[18pt]
           [&_.paragraphWrapper>.paragraph]:font-light
           lg:[&_.paragraphWrapper>.paragraph]:text-center
 
@@ -34,6 +36,7 @@ const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
           image: `
             rounded-full outline outline-3 outline-offset-0 outline-white/30
             shadow shadow-md shadow-black/20
+            lg:w-[200px] lg:h-[200px]
           `,
         },
         quoting: `
@@ -179,15 +182,6 @@ const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
             </Paragraph>
           </div>
         </Header>
-        <Profile className={style.sections.profile.wrapper}>
-          <Image
-            className={style.sections.profile.image}
-            width={152}
-            height={152}
-            src={`https://media.licdn.com/dms/image/D4D03AQElhivS7Oi73w/profile-displayphoto-shrink_400_400/0/1666029039079?e=1715817600&v=beta&t=m_O0BUOoslbDcGd26f8Fl_lOmYWIFw2oaGY8OvR5_-U`}
-            alt="Imagem de perfil do LinkedIn."
-          />
-        </Profile>
         <Quoting
           className={style.sections.quoting}
           text="Uma mente que se abre a uma nova ideia, jamais voltará ao seu tamanho
