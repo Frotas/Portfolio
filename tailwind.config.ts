@@ -112,6 +112,9 @@ const config: Config = {
         paragraph: ["Open Sans", "Roboto", "sans-serif"],
         display: ["Roboto", "Open Sans", "sans-serif"],
       },
+      screens: {
+        tab: "640px",
+      },
     },
   },
   plugins: [

@@ -11,7 +11,10 @@ export default function ParagraphComponent({
   children,
   ...rest
 }: ParagraphComponentProps) {
-  const style = `font-paragraph font-regular text-[12pt] text-black dark:text-white`;
+  const style = `
+    font-paragraph text-[12pt] text-black dark:text-white
+    md:!text-[14pt] lg:!text-[14pt]
+  `;
   return (
     <p {...rest} className={CN(style, className)}>
       {children}

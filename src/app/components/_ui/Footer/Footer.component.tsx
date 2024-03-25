@@ -13,8 +13,8 @@ export default function FooterComponent({
   ...rest
 }: FooterComponentProps) {
   const style = `
-    h-28 font-display text-white bg-cyprus-500/90 dark:bg-cyprus-500/70 flex flex-row flex-wrap
-    justify-center items-center tracking-[.12rem] shadow shadow-black/35
+    h-28 bg-cyprus-500/90 dark:bg-cyprus-500/70 flex flex-row flex-wrap
+    justify-center items-center tracking-[.12rem] inverter shadow-xl shadow-black/35
   `;
   return (
     <footer {...rest} className={CN(style, className)}>

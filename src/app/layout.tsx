@@ -5,6 +5,7 @@ import { ThemeProvider } from "./context/Theme.context";
 import logo from "../../public/Logo.svg";
 import "./app.style.scss";
 import { Footer } from "./components/_ui/Footer";
+import { Paragraph } from "./components/_ui/Typography";
 
 export const metadata: Metadata = {
   title: {
@@ -67,13 +68,42 @@ export default function RootLayout({
       <html lang="pt" data-theme={"light"} data-menu-open={false}>
         <body
           className={`
-            data-[menu-open=true]:overflow-hidden overflow-x-hidden
             font-Roboto bg-gradient-to-bl from-rockBlue-100 to-rockBlue-500
           dark:from-cyprus-600 dark:to-rockBlue-900 bg-fixed transition-all ease-out
           `}
-          data-menu-open={false}
         >
-          <Navigation src={logo} alt="Logo Icon" />
+          <Navigation
+            src={logo}
+            alt="Logo Icon"
+            className={`
+              lg:!px-16 lg:!py-4
+            `}
+            options={{
+              style: {
+                nav: `
+                  lg:!w-full lg:!h-fit lg:gap-8 lg:!flex-row lg:!relative lg:!right-0
+                  lg:!translate-x-0 lg:!bg-transparent
+                `,
+                navList: `
+                  lg:!h-fit lg:!flex-row lg:!justify-evenly lg:m-auto 
+                  lg:!divide-y-0 lg:!divide-x-2 lg:!border-2
+                  lg:!border-darkSlateGray/35 lg:!rounded-full
+                `,
+                navItem: `
+                  lg:w-full lg:!p-0 
+                  lg:last:!rounded-r-full lg:first:!rounded-l-full
+                  lg:hover:!last:rounded-r-full lg:hover:!first:rounded-l-full
+                  lg:data-[selected=true]:!text-white lg:[selected=true]:last:!rounded-r-full
+                  lg:data-[selected=true]:first:!rounded-l-full
+                `,
+                navLink: `
+                  lg:!text-black lg:hover:!text-white
+                  lg:dark:!text-white lg:dark:hover:!text-black
+                `,
+                btnMenu: `lg:sr-only`,
+              },
+            }}
+          />
           {children}
           <Analytics
             mode={
@@ -83,10 +113,15 @@ export default function RootLayout({
             }
           />
           <Footer>
-            <p>
+            <Paragraph
+              className={`
+              font-display text-white dark:text-white
+              tab:text-[16pt]
+            `}
+            >
               Created by GS.DEV
               <sup>™️</sup>
-            </p>
+            </Paragraph>
           </Footer>
         </body>
       </html>

@@ -10,6 +10,14 @@
 @tailwind utilities;
 @tailwind components;
 
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+  &[data-menu-open="true"] {
+    overflow: hidden;
+  }
+}
+
 @layer utilities {
   .link {
     @apply text-cyanBlue-400 dark:text-green-500 hover:underline hover:underline-offset-2
@@ -17,9 +25,6 @@
     .caption {
       @apply text-cyanBlue-400 dark:text-green-500 hover:underline hover:underline-offset-2;
     }
-  }
-  .caption {
-    @apply font-display font-semibold tracking-[.012rem];
   }
   .mask-type {
     &-luminance {

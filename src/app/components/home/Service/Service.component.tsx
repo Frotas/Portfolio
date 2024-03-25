@@ -28,32 +28,37 @@ const ServiceComponent = forwardRef<HTMLElement, ServiceComponentProps>(
   ({ className, options, ...rest }, ref) => {
     const style = {
       root: `
-      flex flex-col gap-4
-      [&_div:nth-child(1)]:m-auto
-      md:!grid md:grid-cols-2 md:grid-rows-2 md:justify-center
-      md:[&_.cardRoot:nth-child(1)]:col-span-1
-      md:[&_.cardRoot:nth-child(2)]:col-span-1
-      md:[&_.cardRoot:nth-child(3)]:col-span-2
-      md:[&_.cardRoot:nth-child(3)]:row-span-2
-      md:[&_.cardRoot:nth-child(3)]:!h-fit
-    `,
+        flex flex-col gap-4
+        [&_div:nth-child(1)]:m-auto
+        md:!grid md:grid-cols-2 md:grid-rows-2 md:justify-center
+        md:[&_.cardRoot:nth-child(1)]:col-span-1
+        md:[&_.cardRoot:nth-child(2)]:col-span-1
+        md:[&_.cardRoot:nth-child(3)]:col-span-2
+        md:[&_.cardRoot:nth-child(3)]:row-span-2
+        md:[&_.cardRoot:nth-child(3)]:!h-fit
+      `,
       wrapper: `cardRoot md:shadow-2xl`,
       card: ``,
       icon: ``,
-      title: `md:text-[20pt] pt-4 pb-2`,
-      paragraph: `
-      md:text-justify text-wrap
-    `,
-      link: `max-w-fit link inline-flex items-baseline whitespace-nowrap px-1
-      [&_.externalLinkIcon]:ml-1
-    `,
+      title: `pt-4 pb-2`,
+      paragraph: `text-wrap md:text-justify`,
+      link: `
+        max-w-fit px-1 font-semibold link inline-flex items-baseline
+        [&_.externalLinkIcon]:ml-1
+        [&_.externalLinkIconAdjust]:absolute
+        [&_.externalLinkIconAdjust]:top-[31px]
+        [&_.externalLinkIconAdjust]:left-[-90px]
+
+        md:[&_.externalLinkIconAdjust]:top-[21px]
+        md:[&_.externalLinkIconAdjust]:left-[-58px]
+      `,
       button: `
-      uppercase text-center text-white font-display font-semibold
-      mx-auto my-4 px-4 py-2 rounded-md bg-blue-600 w-[60%]
-      hover:bg-blue-600/10 hover:text-blue-600 hover:border-blue-600 hover:border
-      hover:no-underline
-      md:w-[80%]
-    `,
+        uppercase text-center text-white font-display font-semibold
+        mx-auto my-4 px-4 py-2 rounded-md bg-blue-600 w-[60%]
+        hover:bg-blue-600/10 hover:text-blue-600 hover:border-blue-600 hover:border
+        hover:no-underline
+        md:w-[80%]
+      `,
     };
     return (
       <section {...rest} ref={ref} className={CN(style.root, className)}>
@@ -69,7 +74,7 @@ const ServiceComponent = forwardRef<HTMLElement, ServiceComponentProps>(
               <CardParagraph className={style.paragraph}>
                 Construção de sistemas robustos e escaláveis, empregando
                 linguagens como Node.js, Java, juntamente com frameworks como
-                Express e JavaSpring.
+                Express.js e JavaSpring
               </CardParagraph>
               {!options![0].hidden?.button && (
                 <Link
@@ -96,7 +101,7 @@ const ServiceComponent = forwardRef<HTMLElement, ServiceComponentProps>(
               <CardParagraph className={style.paragraph}>
                 Criação de interfaces de usuário responsivas, utilizando
                 tecnologias modernas como React.js, Next.js, Angular e
-                JavaSpring.
+                JavaSpring
               </CardParagraph>
               {!options![0].hidden?.button && (
                 <Link
@@ -144,12 +149,11 @@ const ServiceComponent = forwardRef<HTMLElement, ServiceComponentProps>(
                     <RxExternalLink className="externalLinkIcon" />
                   </sup>
                 </Link>
-                .
               </CardParagraph>
               {!options![0].hidden?.button && (
                 <Link
                   aria-label="Contratar Serviço de Cybersecurity"
-                  className={CN(style.button)}
+                  className={CN(style.button, "externalLinkIconAdjust")}
                   href="#contactForm"
                   scroll={true}
                 >

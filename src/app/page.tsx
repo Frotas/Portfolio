@@ -27,7 +27,7 @@ export default function Home(): ReactNode {
     <main
       id="content"
       className={`
-        px-4 pb-16 md:!pb-12 md:!px-16 animate-opacity transition-opacity
+        px-4 pb-16 lg:!pb-12 lg:!px-16 animate-opacity transition-opacity
       `}
     >
       <Hero id="about" />
