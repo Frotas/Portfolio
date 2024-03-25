@@ -19,28 +19,30 @@ type HeroComponentProps = {
 const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
   ({ className, ...rest }, ref) => {
     const style = {
-      wrapper: `md:flex md:flex-col`,
+      wrapper: `lg:flex lg:flex-col`,
       sections: {
         about: `
-          md:w-[50%] md:m-auto md:text-balance md:[&_.title]:text-[20pt] 
-          md:[&_.title]:text-[22pt]
-          md:[&_.subtitle]:text-[18pt]
-          md:[&_.paragraphWrapper>.paragraph]:text-[13pt] md:[&_.paragraphWrapper>.paragraph]:font-light
-          md:[&_.paragraphWrapper>.paragraph]:text-center
-          [&_.link>sup]:z-[-100] [&_.linkIcon]:text-[9pt] [&_.linkIcon]:inline-block
+          lg:w-[70%] lg:m-auto lg:text-balance 
+          [&_.paragraphWrapper>.paragraph]:font-light
+          lg:[&_.paragraphWrapper>.paragraph]:text-center
+
+          [&_.link>sup]:z-[-100] [&_.linkIcon]:font-semibold
+          [&_.linkIcon]:text-[9pt] [&_.linkIcon]:inline-block
         `,
         profile: {
-          wrapper: `md:my-2`,
+          wrapper: `md:my-4 lg:my-2`,
           image: `
-        rounded-full outline outline-3 outline-offset-0 outline-white/30
-        shadow shadow-md shadow-black/20`,
+            rounded-full outline outline-3 outline-offset-0 outline-white/30
+            shadow shadow-md shadow-black/20
+          `,
         },
         quoting: `
-        inline-block 
-        [&_q]:pr-4
-        md:w-[50%] md:m-auto md:my-2 md:text-balance md:[&_q]:text-[13pt]
-        md:[&_q]:font-light md:[&_q]:pr-8
-      `,
+          inline-block 
+          [&_q]:pr-4 md:text-[16pt]
+          lg:w-[50%] lg:m-auto lg:my-2 lg:text-balance
+          md:text-[13pt] lg:text-[16pt]
+          [&_q]:font-light lg:[&_q]:pr-8
+        `,
       },
     };
     return (

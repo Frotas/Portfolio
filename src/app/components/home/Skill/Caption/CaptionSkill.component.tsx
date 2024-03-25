@@ -11,7 +11,10 @@ export default function CaptionComponent({
   children,
   ...rest
 }: CaptionProps) {
-  const style = `uppercase font-display font-semibold text-[12pt] text-white`;
+  const style = `
+    font-display font-semibold tracking-[.012rem] text-[12pt]
+    md:!text-[14pt] 
+  `;
   return (
     <>
       <p {...rest} className={CN(style, className)}>
