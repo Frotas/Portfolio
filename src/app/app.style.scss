@@ -45,6 +45,12 @@ body {
     .caption {
       @apply text-cyanBlue-400 dark:text-green-500 hover:underline hover:underline-offset-2;
     }
+    &>sup {
+      @apply z-[-100];
+      &>.linkIcon {
+        @apply text-cyanBlue-100 dark:text-green-300 text-[9pt] font-semibold inline-block;
+      }
+    }
   }
   .mask-type {
     &-luminance {
@@ -52,6 +58,14 @@ body {
     }
     &-alpha {
       mask-type: alpha;
+    }
+  }
+}
+#contact>.link {
+  &>sup {
+    @apply z-[-100];
+    &>.linkIcon {
+      @apply text-cyanBlue-200 dark:text-green-300 text-[9pt] font-semibold inline-block;
     }
   }
 }

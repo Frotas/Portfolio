@@ -6,7 +6,7 @@ type HeroProfileProps = {
   children: ReactNode;
 };
 
-export default function HeroProfile({ className, children }: HeroProfileProps) {
+export default function HeroProfile({ className, children }: Readonly<HeroProfileProps>) {
   const style = `[&_*]:m-auto`;
   return <div className={CN(style, className)}>{children}</div>;
 }

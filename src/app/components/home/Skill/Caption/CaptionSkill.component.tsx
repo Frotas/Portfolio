@@ -16,10 +16,8 @@ export default function CaptionComponent({
     md:!text-[14pt] 
   `;
   return (
-    <>
-      <p {...rest} className={CN(style, className)}>
-        {children}
-      </p>
-    </>
+    <p {...rest} className={CN(style, className)}>
+      {children}
+    </p>
   );
 }

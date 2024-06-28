@@ -2,11 +2,16 @@ import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { Navigation } from "./components/_ui/Navigation";
 import { ThemeProvider } from "./context/Theme.context";
+import { FaWhatsappSquare, FaGithubSquare, FaLinkedin } from "react-icons/fa";
+import { MdOutlineAlternateEmail } from "react-icons/md";
 import logo from "../../public/Logo.svg";
+import Link from "next/link";
+
 import "./app.style.scss";
 import { Footer } from "./components/_ui/Footer";
 import { Paragraph } from "./components/_ui/Typography";
-
+import { Contact } from "./components/home/Contact";
+import { RxExternalLink } from "react-icons/rx";
 export const metadata: Metadata = {
   title: {
     template: "%s | GS.DEV",
@@ -60,9 +65,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <ThemeProvider>
       <html lang="pt" data-theme={"light"} data-menu-open={false}>
@@ -112,15 +117,27 @@ export default function RootLayout({
                 : "development"
             }
           />
-          <Footer>
-            <Paragraph
-              className={`
-              font-display text-white dark:text-white
-              tab:text-[16pt]
-            `}
-            >
-              Created by GS.DEV
-              <sup>™️</sup>
+        <Footer className="">
+          <Contact id="contact" className="px-4">
+                <Link className="link w-fit text-center flex flex-row items-center" href="https://wa.me/5511981028442?text=Ol%C3%A1%21%0AGostaria%20de%20contratar%20o%20seus%20servi%C3%A7os." target="_blank">
+                  <FaWhatsappSquare className="max-w-[32px] max-h-[32px] w-[26px] h-[26px]" />
+                  <Paragraph className="pl-2 font-display text-white text-[10pt] md:text-[12pt]"> +55 (11) 98102-8442</Paragraph>
+                </Link>
+                <Link className="link w-fit text-center flex flex-row items-center" href="mailto:gs.dev.oficial@gmail.com" target="_blank">
+                  <MdOutlineAlternateEmail className="max-w-[32px] max-h-[32px] w-[26px] h-[26px]" />
+                  <Paragraph className="pl-2 font-display text-white text-[10pt] md:text-[12pt]"> gs.dev.oficial@gmail.com</Paragraph>
+                </Link>
+                <Link className="link w-fit text-center flex flex-row items-center" href="https://linkedin.com/in/guilherme-af-sales/" target="_blank">
+                  <FaLinkedin className="max-w-[32px] max-h-[32px] w-[26px] h-[26px]" />
+                  <Paragraph className="pl-2 font-display text-white text-[10pt] md:text-[12pt]"> /guilherme-af-sales</Paragraph>
+                </Link>
+                <Link className="link w-fit text-center flex flex-row items-center" href="https://github.com/frotas/" target="_blank">
+                  <FaGithubSquare className="max-w-[32px] max-h-[32px] w-[26px] h-[26px]" />
+                  <Paragraph className="pl-2 font-display text-white text-[10pt] md:text-[12pt]"> /frotas</Paragraph>
+                </Link>
+            </Contact>
+            <Paragraph className={`w-full text-center font-display text-white dark:text-white tab:text-[16pt] tracking-[.12rem]`}>
+              Created by GS.DEV<sup>™️</sup>
             </Paragraph>
           </Footer>
         </body>

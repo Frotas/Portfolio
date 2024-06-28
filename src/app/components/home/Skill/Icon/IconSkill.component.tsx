@@ -31,7 +31,7 @@ export default function IconSkillComponent({
   `;
   return (
     <div {...rest} className={CN(style, className)}>
-      {!!!options?.icon?.hidden && <Icon className="icon" />}
+      {!options?.icon?.hidden && <Icon className="icon" />}
       {(!!caption || !options?.caption?.hidden) && (
         <p className="caption">{caption}</p>
       )}
