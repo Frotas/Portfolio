@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 
 import Skill from "./components/home/Skill";
 import { Hero } from "./components/home/Hero";
@@ -59,44 +59,6 @@ export default function Home(): ReactNode {
         <Icon icon={NodeJS} caption="Node JS" />
         <Icon icon={SpringBoot} caption="SpringBoot" />
       </Skill.Root>
-      <Title className="text-center" heading="h2">
-        Meios de Contatos
-      </Title>
-      <Contact id="contact" className="contactSection">
-        <Link
-          className="link"
-          aria-label="GMail"
-          href={"mailto:gs.dev.oficial@gmail.com"}
-          target="_blank"
-        >
-          <Icon icon={GMail} caption="GMail" />
-        </Link>
-        <Link
-          className="link"
-          aria-label="Github"
-          href={"https://www.github.com/frotas/"}
-          target="_blank"
-        >
-          <Icon icon={GitHub} caption="GitHub" />
-        </Link>
-        <Link
-          className="link"
-          aria-label="LinkedIn"
-          href={"https://www.linkedin.com/in/guilherme-af-sales/"}
-          target="_blank"
-        >
-          <Icon icon={LinkedIn} caption="LinkedIn" />
-        </Link>
-        <Link
-          className="link"
-          aria-label="WhatsApp"
-          href={
-            "https://wa.me/5511981028442?Tenho%20interesse%20em%20contratar%20os%20seus%20serviços"
-          }
-        >
-          <Icon icon={WhatsApp} caption="WhatsApp" />
-        </Link>
-      </Contact>
     </main>
   );
 }
