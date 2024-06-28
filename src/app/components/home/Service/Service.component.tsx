@@ -1,6 +1,6 @@
 import Link from "next/link";
 import CN from "@app/helpers/ClassHelper";
-import { HTMLAttributes, HTMLProps, ReactNode, forwardRef } from "react";
+import { HTMLAttributes, HTMLProps, forwardRef } from "react";
 import {
   Card,
   CardWrapper,

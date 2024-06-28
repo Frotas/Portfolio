@@ -1,12 +1,10 @@
 "use client";
-import { HTMLAttributes, HTMLProps, ReactNode, forwardRef } from "react";
+import { HTMLAttributes, HTMLProps, forwardRef } from "react";
 import { RxExternalLink } from "react-icons/rx";
 import { TypeAnimation } from "react-type-animation";
 import { Title, Subtitle, Paragraph } from "../../_ui/Typography";
 
-import Image from "next/image";
 import CN from "@app/helpers/ClassHelper";
-import Profile from "./Profile";
 import Header from "./Header";
 import Quoting from "./Footer";
 import Link from "next/link";
@@ -27,9 +25,6 @@ const HeroComponent = forwardRef<HTMLElement, HeroComponentProps>(
           lg:[&_.subtitle]:text-[18pt]
           [&_.paragraphWrapper>.paragraph]:font-light
           lg:[&_.paragraphWrapper>.paragraph]:text-center
-
-          [&_.link>sup]:z-[-100] [&_.linkIcon]:font-semibold
-          [&_.linkIcon]:text-[9pt] [&_.linkIcon]:inline-block
         `,
         profile: {
           wrapper: `md:my-4 lg:my-2`,

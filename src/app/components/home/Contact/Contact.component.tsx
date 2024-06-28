@@ -10,14 +10,12 @@ type FooterComponentProps = {
 
 const FooterComponent = forwardRef<HTMLElement, FooterComponentProps>(
   ({ children, className, ...rest }, ref) => {
-    const style = `flex flex-row flex-wrap gap-8 justify-center`;
+    const style=`w-fit flex flex-col gap-2`;
 
     return (
-      <>
-        <section {...rest} ref={ref} className={CN(style, className)}>
+      <section {...rest} ref={ref} className={CN(style, className)}>
           {children}
         </section>
-      </>
     );
   }
 );
