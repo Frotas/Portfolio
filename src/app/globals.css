@@ -2,32 +2,121 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    /* Background and Foreground */
+    --background: 220 14% 96%; /* Neutral 50 */
+    --foreground: 224 64% 33%; /* Primary 900 */
+    
+    /* Card and Popover */
+    --card: 220 14% 96%; /* Neutral 50 */
+    --card-foreground: 224 64% 33%; /* Primary 900 */
+    --popover: 220 14% 96%; /* Neutral 50 */
+    --popover-foreground: 224 64% 33%; /* Primary 900 */
+    
+    /* Primary Colors */
+    --primary: 224 64% 33%; /* Primary 900 */
+    --primary-foreground: 220 14% 96%; /* Primary 50 */
+    
+    /* Secondary Colors */
+    --secondary: 180 100% 93%; /* Secondary 50 */
+    --secondary-foreground: 224 64% 33%; /* Primary 900 */
+
+    /* Muted for Cards */
+    --muted-card: 224 57% 27%; /* Ajuste para criar contraste com o card */
+    --muted-card-foreground: 225 12% 94%; /* Alto contraste para texto em cards */
+    
+    /* Accent Colors */
+    --accent: 224 93% 68%; /* Primary 400 */
+    --accent-foreground: 220 14% 96%; /* Primary 50 */
+    
+    /* Destructive Colors */
+    --destructive: 0 84% 60%; /* Vermelho intenso */
+    --destructive-foreground: 220 14% 96%; /* Primary 50 */
+    
+    /* Borders and Inputs */
+    --border: 213 13% 86%; /* Neutral 200 */
+    --input: 216, 21.13%, 86.08%; /* Neutral 200 */
+    
+    /* Rings */
+    --ring: 224 64% 33%; /* Primary 900 */
+    
+    /* Charts */
+    --chart-1: 224 91% 60%; /* Primary 500 */
+    --chart-2: 224 83% 53%; /* Primary 600 */
+    --chart-3: 224 71% 40%; /* Primary 800 */
+    --chart-4: 224 57% 21%; /* Primary 950 */
+    --chart-5: 220 14% 96%; /* Neutral 50 */
+    
+    /* Shadows and Effects */
+    --shadow-primary: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0px 6px 8px rgba(0, 0, 0, 0.15);
+    --transition-duration: 0.3s;
+    --radius: 0.5rem;
+  }
+  
+  .dark {
+    /* Background and Foreground */
+    --background: 224 57% 21%; /* Primary 950 */
+    --foreground: 225 12% 94%; /* Neutral 100 */
+    
+    /* Card and Popover */
+    --card: 224 64% 33%; /* Primary 900 */
+    --card-foreground: 225 12% 94%; /* Neutral 100 */
+    --popover: 224 64% 33%; /* Primary 900 */
+    --popover-foreground: 225 12% 94%; /* Neutral 100 */
+    
+    /* Primary Colors */
+    --primary: 225 12% 94%; /* Primary 50 */
+    --primary-foreground: 224 57% 21%; /* Primary 950 */
+    
+    /* Secondary Colors */
+    --secondary: 180 100% 93%; /* Secondary 50 */
+    --secondary-foreground: 224 64% 33%; /* Primary 900 */
+    
+    /* Muted Colors */
+    --muted: 218 13% 32%; /* Neutral 700 */
+    --muted-foreground: 217 14% 39%; /* Neutral 600 */
+
+    /* Muted for Cards */
+    --muted-card: 224 57% 27%; /* Ajuste para criar contraste com o card */
+    --muted-card-foreground: 225 12% 94%; /* Alto contraste para texto em cards */
+    
+    /* Accent Colors */
+    --accent: 224 93% 68%; /* Primary 400 */
+    --accent-foreground: 224 57% 21%; /* Primary 950 */
+    
+    /* Destructive Colors */
+    --destructive: 0 62% 31%; /* Vermelho escuro */
+    --destructive-foreground: 225 12% 94%; /* Neutral 100 */
+    
+    /* Borders and Inputs */
+    --border: 218 13% 32%; /* Neutral 700 */
+    --input: 216, 21.13%, 86.08%; /* Oxford Blue 200 */
+    
+    /* Rings */
+    --ring: 224 57% 21%; /* Primary 950 */
+    
+    /* Charts */
+    --chart-1: 224 91% 60%; /* Primary 500 */
+    --chart-2: 224 83% 53%; /* Primary 600 */
+    --chart-3: 224 71% 40%; /* Primary 800 */
+    --chart-4: 224 57% 21%; /* Primary 950 */
+    --chart-5: 220 14% 96%; /* Neutral 50 */
+  
+    /* Shadows and Effects */
+    --shadow-primary: 0px 4px 6px rgba(0, 0, 0, 0.4);
+    --shadow-hover: 0px 6px 8px rgba(0, 0, 0, 0.6);
+    --transition-duration: 0.3s;
+    --radius: 0.5rem;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
