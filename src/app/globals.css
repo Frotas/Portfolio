@@ -39,7 +39,7 @@
     --input: 216, 21.13%, 86.08%; /* Neutral 200 */
     
     /* Rings */
-    --ring: 224 64% 33%; /* Primary 900 */
+    --ring: 173.41, 80.39%, 40%; /* Teal 500 */
     
     /* Charts */
     --chart-1: 224 91% 60%; /* Primary 500 */
@@ -93,9 +93,9 @@
     /* Borders and Inputs */
     --border: 218 13% 32%; /* Neutral 700 */
     --input: 216, 21.13%, 86.08%; /* Oxford Blue 200 */
-    
+
     /* Rings */
-    --ring: 224 57% 21%; /* Primary 950 */
+    --ring: 173.41, 80.39%, 40%; /* Teal 500 */
     
     /* Charts */
     --chart-1: 224 91% 60%; /* Primary 500 */
@@ -117,6 +117,66 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply relative bg-background text-foreground;
   }
+  i {
+    @apply italic;
+  }
+  b, strong {
+    @apply font-bold;
+  }
+}
+
+@layer utilities {
+  .font-title {
+    @apply font-serif text-xl font-bold select-text text-balance;
+  }
+  .font-subtitle {
+    @apply font-serif text-lg font-bold select-text text-balance;
+  }
+  .font-paragraph  {
+    @apply font-sans text-base font-normal text-balance select-text;
+  }
+  .font-pre {
+    @apply font-mono text-base font-light text-balance;
+  }
+  .text-highlight  {
+    @apply dark:text-mountain-meadow-500 text-base font-semibold not-italic;
+  }
+  
+  .container-grid {
+    display: grid; 
+    grid-template-columns: 0fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+      "Nav Main"
+      "Nav Main"
+      "Footer Footer";
+  }
+  /* #navigationWrapper {
+    grid-area: Nav;
+  } 
+  #mainContent {
+    grid-area: Main;
+  }
+  #footerWrapper {
+    grid-area: Footer;
+  } */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(1, minmax(1fr));
+    grid-template-areas:
+      "init about"
+      "services services";
+  }
+  /* #hero {
+    grid-area: init;
+  }
+  #about {
+    grid-area: about;
+  }
+  #services {
+    grid-area: services;
+  } */
 }
