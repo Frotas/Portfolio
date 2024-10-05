@@ -1,8 +1,25 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Fira_Code, Inter, Lato, Merriweather } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+import { ThemeProvider } from "@app/providers/theme-provider";
+
+const interFont = Inter({ subsets: ["latin"], variable: "--font-serif" });
+const merriweatherFont = Merriweather({
+  subsets: ["latin"],
+  weight: ["300", "400", "700", "900"],
+  variable: "--font-sans",
+});
+const firaFont = Fira_Code({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  preload: true,
+});
+const latoFont = Lato({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "700", "900"],
+  variable: "--font-lato",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +32,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="pt-BR">
+      <body className={`${interFont.variable || merriweatherFont.variable || firaFont.variable || latoFont.variable}`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
