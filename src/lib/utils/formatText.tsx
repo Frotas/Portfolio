@@ -1,5 +1,5 @@
-import { Paragraph } from "@app/components/ui";
 import { Fragment } from "react";
+import { Paragraph } from "@app/components/ui";
 
 export function formatText(text: string | string[]) {
   try {
