@@ -1,6 +1,6 @@
 import { FileTextIcon, LayersIcon, SquareStackIcon, UserIcon } from "lucide-react";
 
-import { Footer, LinkTree, Main, Navigation } from "@app/components/home";
+import { FooterSection, LinkTree, Main, Navigation } from "@app/components/home";
 import { cn } from "@app/lib/utils";
 
 export default async function Home() {
@@ -51,8 +51,24 @@ export default async function Home() {
     >
       <Navigation linkTree={linkTree} className="[grid-area:Nav;]" />
       <Main className="[grid-area:Main;] md:mx-28 md:my-12" />
-      <Footer className="[grid-area:Footer;]" />
+      <FooterSection
+        className="[grid-area:Footer;]"
+        data={{
+          author: {
+            name: "Guilherme Augusto Frotas Sales",
+            email: "gs.dev.oficial@gmail.com",
+            phone: "+55 (11) 98102-8442",
+            wa: {
+              show: false,
+              message: "",
+            },
+          },
+          copy: {
+            text: "Created by GS.DEV",
+            license: "MIT License",
+          },
+        }}
+      />
     </section>
   );
-}
 }
