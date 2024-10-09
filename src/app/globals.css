@@ -4,110 +4,66 @@
 
 @layer base {
   :root {
-    /* Background and Foreground */
-    --background: 220 14% 96%; /* Neutral 50 */
-    --foreground: 224 64% 33%; /* Primary 900 */
-    
-    /* Card and Popover */
-    --card: 220 14% 96%; /* Neutral 50 */
-    --card-foreground: 224 64% 33%; /* Primary 900 */
-    --popover: 220 14% 96%; /* Neutral 50 */
-    --popover-foreground: 224 64% 33%; /* Primary 900 */
-    
-    /* Primary Colors */
-    --primary: 224 64% 33%; /* Primary 900 */
-    --primary-foreground: 220 14% 96%; /* Primary 50 */
-    
-    /* Secondary Colors */
-    --secondary: 180 100% 93%; /* Secondary 50 */
-    --secondary-foreground: 224 64% 33%; /* Primary 900 */
+    --background: 210, 40%, 98%; /* black-haze-50 */
+    --foreground: 222, 47%, 11%; /* mirage-900 */
 
-    /* Muted for Cards */
-    --muted-card: 224 57% 27%; /* Ajuste para criar contraste com o card */
-    --muted-card-foreground: 225 12% 94%; /* Alto contraste para texto em cards */
-    
-    /* Accent Colors */
-    --accent: 224 93% 68%; /* Primary 400 */
-    --accent-foreground: 220 14% 96%; /* Primary 50 */
-    
-    /* Destructive Colors */
-    --destructive: 0 84% 60%; /* Vermelho intenso */
-    --destructive-foreground: 220 14% 96%; /* Primary 50 */
-    
-    /* Borders and Inputs */
-    --border: 213 13% 86%; /* Neutral 200 */
-    --input: 216, 21.13%, 86.08%; /* Neutral 200 */
-    
-    /* Rings */
-    --ring: 173.41, 80.39%, 40%; /* Teal 500 */
-    
-    /* Charts */
-    --chart-1: 224 91% 60%; /* Primary 500 */
-    --chart-2: 224 83% 53%; /* Primary 600 */
-    --chart-3: 224 71% 40%; /* Primary 800 */
-    --chart-4: 224 57% 21%; /* Primary 950 */
-    --chart-5: 220 14% 96%; /* Neutral 50 */
-    
-    /* Shadows and Effects */
-    --shadow-primary: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    --shadow-hover: 0px 6px 8px rgba(0, 0, 0, 0.15);
-    --transition-duration: 0.3s;
+    --card: 222, 47%, 11%; /* mirage-900 */
+    --card-foreground: 210, 40%, 98%; /* black-haze-50 */
+
+    --popover: 210, 40%, 98%; /* black-haze-50 */
+    --popover-foreground: 222, 47%, 11%; /* mirage-900 */
+
+    --primary: 224, 71%, 40%; /* cobalt-800 */
+    --primary-foreground: 0, 0%, 100%; /* slate-50 */
+
+    --secondary: 175, 84%, 32%; /* teal-600 */
+    --secondary-foreground: 0, 0%, 100%; /* slate-50 */
+
+    --muted: 214, 32%, 91%; /* zumthor-200 */
+    --muted-foreground: 222, 47%, 11%; /* mirage-900 */
+
+    --accent: 222.67, 76.33%, 48.04%; /* cobalt-700 */
+    --accent-foreground: 214, 32%, 91%; /* mirage-900 */
+
+    --destructive: 0, 84.2%, 60.2%; /* coral-red-500 */
+    --destructive-foreground: 0, 0%, 100%; /* slate-50 */
+
+    --border: 214, 32%, 91%; /* zumthor-200 */
+    --input: 214, 32%, 91%; /* zumthor-200 */
+    --ring: 224, 71%, 40%; /* cobalt-800 */
+
     --radius: 0.5rem;
   }
-  
+
   .dark {
-    /* Background and Foreground */
-    --background: 224 57% 21%; /* Primary 950 */
-    --foreground: 225 12% 94%; /* Neutral 100 */
-    
-    /* Card and Popover */
-    --card: 224 64% 33%; /* Primary 900 */
-    --card-foreground: 225 12% 94%; /* Neutral 100 */
-    --popover: 224 64% 33%; /* Primary 900 */
-    --popover-foreground: 225 12% 94%; /* Neutral 100 */
-    
-    /* Primary Colors */
-    --primary: 225 12% 94%; /* Primary 50 */
-    --primary-foreground: 224 57% 21%; /* Primary 950 */
-    
-    /* Secondary Colors */
-    --secondary: 180 100% 93%; /* Secondary 50 */
-    --secondary-foreground: 224 64% 33%; /* Primary 900 */
-    
-    /* Muted Colors */
-    --muted: 218 13% 32%; /* Neutral 700 */
-    --muted-foreground: 217 14% 39%; /* Neutral 600 */
+    --background: 222, 47%, 11%; /* mirage-900 */
+    --foreground: 0, 0%, 100%; /* slate-50 */
 
-    /* Muted for Cards */
-    --muted-card: 224 57% 27%; /* Ajuste para criar contraste com o card */
-    --muted-card-foreground: 225 12% 94%; /* Alto contraste para texto em cards */
-    
-    /* Accent Colors */
-    --accent: 224 93% 68%; /* Primary 400 */
-    --accent-foreground: 224 57% 21%; /* Primary 950 */
-    
-    /* Destructive Colors */
-    --destructive: 0 62% 31%; /* Vermelho escuro */
-    --destructive-foreground: 225 12% 94%; /* Neutral 100 */
-    
-    /* Borders and Inputs */
-    --border: 218 13% 32%; /* Neutral 700 */
-    --input: 216, 21.13%, 86.08%; /* Oxford Blue 200 */
+    --card: 0, 0%, 100%; /* slate-50 */
+    --card-foreground: 222, 47%, 11%; /* mirage-900 */
 
-    /* Rings */
-    --ring: 173.41, 80.39%, 40%; /* Teal 500 */
-    
-    /* Charts */
-    --chart-1: 224 91% 60%; /* Primary 500 */
-    --chart-2: 224 83% 53%; /* Primary 600 */
-    --chart-3: 224 71% 40%; /* Primary 800 */
-    --chart-4: 224 57% 21%; /* Primary 950 */
-    --chart-5: 220 14% 96%; /* Neutral 50 */
-  
-    /* Shadows and Effects */
-    --shadow-primary: 0px 4px 6px rgba(0, 0, 0, 0.4);
-    --shadow-hover: 0px 6px 8px rgba(0, 0, 0, 0.6);
-    --transition-duration: 0.3s;
+    --popover: 222, 47%, 11%; /* mirage-900 */
+    --popover-foreground: 0, 0%, 100%; /* slate-50 */
+
+    --primary: 224, 71%, 40%; /* blue-800 */
+    --primary-foreground: 0, 0%, 100%; /* slate-50 */
+
+    --secondary: 175, 84%, 32%; /* teal-600 */
+    --secondary-foreground: 0, 0%, 100%; /* slate-50 */
+
+    --muted: 222, 47%, 11%; /* mirage-900 */
+    --muted-foreground: 0, 0%, 100%; /* slate-50 */
+
+    --accent: 210, 96.36%, 78.43%; /*cobalt-600 */
+    --accent-foreground: 212.55, 74.63%, 59.8%; /* mirage-500 */
+
+    --destructive: 0, 84.2%, 60.2%; /* coral-red-500 */
+    --destructive-foreground: 0, 0%, 100%; /* slate-50 */
+
+    --border: 222, 47%, 11%; /* mirage-900 */
+    --input: 222, 47%, 11%; /* mirage-900 */
+    --ring: 224, 71%, 40%; /* blue-800 */
+
     --radius: 0.5rem;
   }
 }
@@ -117,66 +73,21 @@
     @apply border-border;
   }
   body {
-    @apply relative bg-background text-foreground;
-  }
-  i {
-    @apply italic;
-  }
-  b, strong {
-    @apply font-bold;
+    @apply bg-background text-foreground;
   }
 }
 
 @layer utilities {
   .font-title {
-    @apply font-serif text-xl font-bold select-text text-balance;
+    @apply font-sans text-xl font-bold select-text text-balance sm:text-2xl;
   }
   .font-subtitle {
-    @apply font-serif text-lg font-bold select-text text-balance;
+    @apply font-sans text-lg font-bold select-text text-balance sm:text-xl;
   }
-  .font-paragraph  {
-    @apply font-sans text-base font-normal text-balance select-text;
+  .font-paragraph {
+    @apply font-serif font-normal text-base text-balance select-text md:text-lg;
   }
   .font-pre {
     @apply font-mono text-base font-light text-balance;
   }
-  .text-highlight  {
-    @apply dark:text-mountain-meadow-500 text-base font-semibold not-italic;
-  }
-  
-  .container-grid {
-    display: grid; 
-    grid-template-columns: 0fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: 
-      "Nav Main"
-      "Nav Main"
-      "Footer Footer";
-  }
-  /* #navigationWrapper {
-    grid-area: Nav;
-  } 
-  #mainContent {
-    grid-area: Main;
-  }
-  #footerWrapper {
-    grid-area: Footer;
-  } */
-  .content-grid {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: repeat(1, minmax(1fr));
-    grid-template-areas:
-      "init about"
-      "services services";
-  }
-  /* #hero {
-    grid-area: init;
-  }
-  #about {
-    grid-area: about;
-  }
-  #services {
-    grid-area: services;
-  } */
 }
