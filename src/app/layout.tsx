@@ -26,6 +26,7 @@ const latoFont = Lato({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(`https://${process.env.VERCEL_URL || "gs-dev-oficial.vercel.app"}`),
   title: "GS.DEV - Desenvolvedor Full Stack e Freelancer",
   description:
     "Portfólio de Desenvolvedor Full Stack especializado em React, Next.js e TypeScript. Veja meus projetos e entre em contato.",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "GS.DEV - Desenvolvedor Full Stack e Freelancer",
     description: "Portfólio de Desenvolvedor Full Stack com foco em React e Next.js. Confira meus projetos!",
-    url: "https://gs-dev-oficial.vercel.app/",
+    url: `https://${process.env.VERCEL_URL || "gs-dev-oficial.vercel.app"}`,
     siteName: "Portfólio de GS.DEV",
     images: [
       {
