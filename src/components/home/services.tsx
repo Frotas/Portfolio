@@ -51,30 +51,26 @@ export const ServicesSection = forwardRef<HTMLDivElement, ServiceProps>(({ data,
   const isMobile: boolean = useMediaQuery(768);
 
   return (
-    <>
-      <header className="my-8 flex items-center gap-2">
+    <section ref={ref} className={cn("flex flex-col gap-8", className)} {...props}>
+      <header className="flex items-center gap-2">
         {Icon && Icon}
         <Title>{title}</Title>
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
       </header>
       {isMobile ? (
-        <div ref={ref} className={cn("flex gap-12 text-black dark:text-white", className)} {...props}>
+        <div className={"flex gap-12"}>
           {serviceList.map(({ icon: Icon, title, subtitle, description, cta }) => (
             <Card key={title.trim()} className="flex w-full max-w-[25rem] flex-col items-center shadow-lg">
               <CardHeader className="items-center text-center">
                 {Icon && Icon}
                 <CardTitle className="font-title">{title}</CardTitle>
-                {subtitle && <CardDescription className="font-subtitle">{subtitle}</CardDescription>}
+                {subtitle && <CardTitle className="font-subtitle">{subtitle}</CardTitle>}
               </CardHeader>
-              <CardContent>
-                <Paragraph>{description}</Paragraph>
+              <CardContent className="md:px-8">
+                <CardDescription>{description}</CardDescription>
               </CardContent>
               <CardFooter>
-                <Button
-                  className="w-full bg-bay-of-many-500 font-semibold font-serif text-white uppercase hover:bg-bay-of-many-400 dark:text-white"
-                  variant={"default"}
-                  size={"lg"}
-                >
+                <Button className="w-full font-sans font-semibold text-white uppercase" variant={"default"} size={"lg"}>
                   {cta}
                 </Button>
               </CardFooter>
@@ -92,21 +88,21 @@ export const ServicesSection = forwardRef<HTMLDivElement, ServiceProps>(({ data,
           className="w-full"
           {...props}
         >
-          <CarouselContent className="md:-ml-4 ml-0 max-w-sm">
+          <CarouselContent className="md:-ml-4 ml-0">
             {serviceList.map(({ icon: Icon, title, subtitle, description, cta }) => (
               <CarouselItem key={title.trim()} className="pl-3 md:pl-4">
-                <Card className="flex h-full w-full max-w-[22rem] flex-col shadow-lg">
+                <Card className="flex h-full w-full flex-col items-center justify-center shadow-lg">
                   <CardHeader className="items-center text-center">
                     {Icon && Icon}
                     <CardTitle className="font-title">{title}</CardTitle>
-                    {subtitle && <CardDescription className="font-subtitle">{subtitle}</CardDescription>}
+                    {subtitle && <CardTitle className="font-subtitle">{subtitle}</CardTitle>}
                   </CardHeader>
-                  <CardContent className="flex items-center justify-center">
-                    <Paragraph className="w-full text-balance">{description}</Paragraph>
+                  <CardContent>
+                    <CardDescription className="font-paragraph">{description}</CardDescription>
                   </CardContent>
                   <CardFooter>
                     <Button
-                      className="w-full bg-bay-of-many-500 font-semibold font-serif text-white uppercase hover:bg-bay-of-many-400 dark:text-white"
+                      className="w-full font-sans font-semibold text-white uppercase"
                       variant={"default"}
                       size={"lg"}
                     >
@@ -121,7 +117,7 @@ export const ServicesSection = forwardRef<HTMLDivElement, ServiceProps>(({ data,
           <CarouselNext className="mr-9" />
         </Carousel>
       )}
-    </>
+    </section>
   );
 });
 ServicesSection.displayName = "ServicesSection";

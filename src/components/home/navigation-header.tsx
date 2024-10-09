@@ -1,6 +1,5 @@
 "use client";
 
-import { DoubleArrowLeftIcon, DoubleArrowRightIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
 import { DetailedHTMLProps, type HTMLAttributes, RefAttributes, forwardRef, useState } from "react";
@@ -11,6 +10,7 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
+  Paragraph,
   ThemeToggle,
   Tooltip,
   TooltipContent,
@@ -40,44 +40,28 @@ export const Navigation = forwardRef<
   HTMLElement,
   Omit<NavigationBarProps & NavigationMenuProps & RefAttributes<HTMLElement>, "ref">
 >(({ className, linkTree, ...props }, ref) => {
-  const [menuState, setMenuState] = useState(false);
-  const toggleMenu = () => {
-    setMenuState(!menuState);
-  };
   return (
     <NavigationMenu
       ref={ref}
       role="navigation"
-      data-collapse={menuState}
       className={cn(
-        "sticky top-0 flex h-fit w-full max-w-screen-2xl justify-evenly bg-background/35 py-4 text-black shadow-black/25 shadow-md backdrop-blur-sm dark:text-white",
-        "md:top-2 md:left-12 md:w-max md:flex-col md:gap-12 md:bg-transparent md:px-6 md:py-12 md:shadow-none md:backdrop-blur-none",
+        "sticky top-0 flex w-full max-w-screen-2xl justify-between bg-background/35 p-4 text-black shadow-black/25 shadow-md backdrop-blur-sm dark:text-white",
+        "md:top-5 md:left-0 md:w-max md:flex-col md:gap-12 md:bg-transparent md:px-6 md:py-12 md:shadow-none md:backdrop-blur-none",
         "transition-[all_300ms_ease-in-out]",
         className,
       )}
       {...props}
     >
       <header className="dark:text-white">
-        <Link href={"/"}>
+        <Link href={"/"} role="link">
           <Image
             className="max-h-10 max-w-10 transition-all duration-500 ease-linear hover:scale-110 md:max-h-[62px] md:max-w-[62px] md:hover:scale-150"
             src={logo}
-            alt={"Guilherme Sales Desenvolvedor - GS DEV"}
+            alt={"Guilherme Sales Desenvolvedor - GS DEV Logo"}
+            role="img"
+            placeholder="blur"
           />
         </Link>
-        <Button
-          aria-expanded={menuState}
-          aria-controls="navigationBar"
-          aria-label={menuState ? "Recolher menu de navegação" : "Expandir menu de navegação"}
-          onClick={toggleMenu}
-          size={"icon"}
-          variant={"outline"}
-          className={
-            "md:-right-7 sr-only md:absolute md:top-2 md:h-8 md:w-8 md:bg-oxford-blue-600 md:transition-colors md:duration-500 md:ease-linear md:hover:bg-oxford-blue-500"
-          }
-        >
-          {(!menuState && <DoubleArrowRightIcon aria-hidden />) || <DoubleArrowLeftIcon aria-hidden />}
-        </Button>
       </header>
       <NavigationMenuList id="navigationMenuList" className="flex md:flex-col md:gap-4" role="menu">
         {linkTree.map(({ anchor, text, icon: Icon, tooltip }, index) => {
@@ -85,23 +69,23 @@ export const Navigation = forwardRef<
             <NavigationMenuItem
               key={index + 1}
               role="menuitem"
-              className={cn(
-                navigationMenuTriggerStyle(),
-                "w-full bg-transparent hover:bg-bay-of-many-700 hover:text-white",
-              )}
+              className={cn(navigationMenuTriggerStyle(), "w-full bg-transparent hover:text-white")}
             >
               {tooltip?.show && (
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger>
-                      <Link href={anchor} legacyBehavior passHref>
-                        <NavigationMenuLink className="flex flex-col items-center gap-3 font-serif text-[10pt]">
+                      <Link href={anchor} aria-label={text} role="link" legacyBehavior passHref>
+                        <NavigationMenuLink
+                          role="link"
+                          className="flex flex-col items-center gap-3 font-serif text-[10pt]"
+                        >
                           <i>{Icon}</i>
-                          {menuState && text}
+                          <Paragraph className="sr-only text-md">{text}</Paragraph>
                         </NavigationMenuLink>
                       </Link>
                     </TooltipTrigger>
-                    <TooltipContent role="tooltip" className="bg-[hsl(225_12%_94%)] font-serif text-black">
+                    <TooltipContent role="tooltip" className="font-serif text-black">
                       {tooltip?.text}
                     </TooltipContent>
                   </Tooltip>
@@ -109,9 +93,9 @@ export const Navigation = forwardRef<
               )}
               {!tooltip?.show && (
                 <Link href={anchor} legacyBehavior passHref>
-                  <NavigationMenuLink className="flex w-full gap-3 font-serif text-[10pt]">
+                  <NavigationMenuLink aria-label={text} className="flex w-full gap-3 font-serif text-[10pt]">
                     <i>{Icon}</i>
-                    {menuState && text}
+                    <Paragraph className="sr-only text-md">{text}</Paragraph>
                   </NavigationMenuLink>
                 </Link>
               )}
@@ -120,13 +104,7 @@ export const Navigation = forwardRef<
         })}
       </NavigationMenuList>
       <footer className="">
-        <ThemeToggle
-          classList={{
-            button: "bg-oxford-blue-600/35",
-            dropdown: "bg-black/35 backdrop-blur-md text-black",
-            dropdownItem: "focus:bg-black/80 focus:text-white dark:focus:bg-white/80 dark:focus:text-black",
-          }}
-        />
+        <ThemeToggle />
       </footer>
     </NavigationMenu>
   );

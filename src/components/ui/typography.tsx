@@ -1,5 +1,5 @@
 import { cn } from "@app/lib/utils";
-import { Fragment, HTMLAttributes } from "react";
+import { Fragment, HTMLAttributes, forwardRef } from "react";
 
 interface Heading extends HTMLAttributes<HTMLHeadingElement> {}
 
@@ -19,12 +19,12 @@ export const Subtitle = ({ children, className, ...props }: Heading) => {
   );
 };
 
-interface Paragraph extends HTMLAttributes<HTMLParagraphElement> {}
+interface ParagraphProps extends HTMLAttributes<HTMLParagraphElement> {}
 
-export const Paragraph = ({ children, className, ...props }: Paragraph) => {
+export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(({ children, className, ...props }, ref) => {
   return (
-    <p className={cn("font-paragraph", className)} {...props}>
+    <p ref={ref} className={cn("font-paragraph", className)} {...props}>
       <Fragment>{children}</Fragment>
     </p>
   );
-};
+});

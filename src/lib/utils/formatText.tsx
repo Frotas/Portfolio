@@ -1,5 +1,5 @@
-import { Fragment } from "react";
 import { Paragraph } from "@app/components/ui";
+import { Fragment } from "react";
 
 export function formatText(text: string | string[]) {
   try {
@@ -20,13 +20,13 @@ export function formatText(text: string | string[]) {
         // Adiciona texto formatado
         if (boldMatch) {
           parts.push(
-            <b key={offset} className="text-highlight">
+            <b key={offset} className="text-accent">
               {boldText}
             </b>,
           );
         } else if (italicMatch) {
           parts.push(
-            <i key={offset} className="text-highlight">
+            <i key={offset} className="text-accent">
               {italicText}
             </i>,
           );

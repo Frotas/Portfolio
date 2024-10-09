@@ -1,74 +1,89 @@
-import { FileTextIcon, LayersIcon, SquareStackIcon, UserIcon } from "lucide-react";
-
-import { FooterSection, LinkTree, Main, Navigation } from "@app/components/home";
+import crypto from "node:crypto";
+import { title } from "node:process";
+import { text } from "node:stream/consumers";
+import { AboutSection, HeroSection, ServiceList, ServicesSection } from "@app/components/home";
 import { cn } from "@app/lib/utils";
+import { AppWindowIcon, FileTextIcon, LayersIcon, ServerIcon, ShieldHalfIcon } from "lucide-react";
+
+const servicesList: ServiceList[] = [
+  {
+    title: "Desenvolvimento de Sistemas Web",
+    description: `
+      Implementação de sistemas internos para aplicações web,
+      utilizando as principais tecnologias amplamente reconhecidas pelo mercado.
+    `,
+    cta: "Contratar Serviço",
+    icon: <ServerIcon aria-hidden className="h-14 w-14 rounded-md bg-slate-500/15 stroke-1 p-1 md:h-16 md:w-16" />,
+  },
+  {
+    title: "Desenvolvimento de Websites e e-Commerce",
+    description: `
+      Implementação de interfaces visuais eficientes e modernas,
+      utilizando as principais práticas e tecnologias reconhecidas pelo mercado.
+    `,
+    cta: "Contratar Serviço",
+    icon: <AppWindowIcon aria-hidden className="h-14 w-14 rounded-md bg-slate-500/15 stroke-1 p-1 md:h-16 md:w-16" />,
+  },
+  {
+    title: "Proteção e Segurança de Aplicações Web",
+    description: `
+      Realização de análises de vulnerabilidades e avaliações de segurança,
+      com técnicas amplamente reconhecidas e aceitas pelo mercado e principais
+      órgãos de segurança.
+    `,
+    cta: "Contratar Serviço",
+    icon: <ShieldHalfIcon aria-hidden className="h-14 w-14 rounded-md bg-slate-500/15 stroke-1 p-1 md:h-16 md:w-16" />,
+  },
+];
+
+const style = new Map<string, string[]>();
+style.set("classMap", ["flex flex-col gap-4 px-4 sm:px-8 py-12 [grid-area:main]"]);
 
 export default async function Home() {
-  const linkTree: LinkTree[] = [
-    {
-      anchor: "#about",
-      icon: <FileTextIcon size={20} aria-hidden />,
-      text: "Sobre mim",
-      tooltip: {
-        show: true,
-        text: "Sobre mim",
-      },
-    },
-    {
-      anchor: "#services",
-      icon: <LayersIcon size={20} aria-hidden />,
-      text: "Serviços",
-      tooltip: {
-        show: true,
-        text: "Serviços",
-      },
-    },
-    {
-      anchor: "#skills",
-      icon: <SquareStackIcon size={20} aria-hidden />,
-      text: "Habilidades Técnicas",
-      tooltip: {
-        show: true,
-        text: "Habilidades Técnicas",
-      },
-    },
-    {
-      anchor: "#projects",
-      icon: <UserIcon size={20} aria-hidden />,
-      text: "Projetos",
-      tooltip: {
-        show: true,
-        text: "Projetos",
-      },
-    },
-  ];
   return (
-    <section
+    <main
+      id="mainContent"
       className={cn(
-        "grid w-full grid-cols-2 grid-rows-[0fr_1fr] gap-[1rem_0rem] [grid-template-areas:'Nav_Nav'_'Main_Main'_'Footer_Footer';]",
-        "md:grid-cols-[0fr_1fr] md:grid-rows-2 md:gap-[1rem_0rem] md:[grid-template-areas:'Nav_Main'_'Nav_Main'_'Footer_Footer';]",
+        style.get("classMap"),
+        `md:my-20 md:grid md:grid-cols-2 md:grid-rows-2 md:gap-[8rem_0] md:py-2 md:[grid-template-areas:"hero_about"_"hero_about"_"services_services"]`,
       )}
     >
-      <Navigation linkTree={linkTree} className="[grid-area:Nav;]" />
-      <Main className="[grid-area:Main;] md:mx-28 md:my-12" />
-      <FooterSection
-        className="[grid-area:Footer;]"
+      <HeroSection
+        id="heroSection"
+        className="w-full [grid-area:hero]"
         data={{
-          author: {
-            name: "Guilherme Augusto Frotas Sales",
-            email: "gs.dev.oficial@gmail.com",
-            phone: "+55 (11) 98102-8442",
-            wa: {
-              show: false,
-              message: "",
-            },
-          },
-          copy: {
-            text: "Created by GS.DEV",
-            license: "MIT License",
+          title: `Olá, Sou o Guilherme!`,
+          desc: "**Desenvolvedor Web Full Stack** com mais de 2 anos de experiência na criação de soluções web.",
+          avatar: {
+            link: `https://gravatar.com/avatar/${crypto.createHash("sha256").update(`gs.dev.oficial@gmail.com`).digest("hex")}`,
           },
         }}
       />
-    </section>
+      <AboutSection
+        id="aboutSection"
+        className="w-full [grid-area:about]"
+        data={{
+          icon: <FileTextIcon aria-hidden className="stroke-1" size={32} />,
+          title: `Sobre mim`,
+          text: [
+            `Meu interesse por tecnologia começou através dos jogos, onde dei meus primeiros passos criando macros para jogos online.
+            Com o tempo, fui me aprofundando nos conceitos fundamentais da **Tecnologia da Informação**, o que me levou a cursar
+            **técnico em Desenvolvimento de Sistemas**. Esse processo solidificou ainda mais minha conexão com a área.`,
+            `Tive a oportunidade de participar de um **projeto social** através da ReCode, o que ampliou minha visão sobre o impacto positivo da tecnologia. Agora, estou empolgado para
+            colaborar em projetos inovadores e desafiadores, buscando constantemente superar meus limites no
+            **Desenvolvimento Web** e contribuir ativamente para a comunidade **Open Source**.`,
+          ],
+        }}
+      />
+      <ServicesSection
+        id="servicesSection"
+        className="w-full [grid-area:services]"
+        data={{
+          icon: <LayersIcon aria-hidden className="stroke-1" size={32} />,
+          title: "Serviços",
+          serviceList: servicesList,
+        }}
+      />
+    </main>
   );
 }

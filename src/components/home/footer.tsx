@@ -3,12 +3,11 @@ import Link from "next/link";
 import { DetailedHTMLProps, Fragment, HTMLAttributes, ReactElement } from "react";
 
 import { Paragraph } from "@app/components/ui";
-import { cn } from "@app/lib/utils";
+import { cn, formatText } from "@app/lib/utils";
 
 type FooterSectionProps = {
   data: {
     author: {
-      name: string;
       email?: string;
       phone?: string;
       wa?: {
@@ -18,7 +17,7 @@ type FooterSectionProps = {
     };
     copy?: {
       text: string;
-      license: string | ReactElement;
+      license: string;
     };
     socialMedias?: [
       {
@@ -34,51 +33,60 @@ export const FooterSection = ({ data, className }: FooterSectionProps) => {
   return (
     <footer
       className={cn(
-        "bg-black/30 px-10 py-8 backdrop-blur-md",
+        "bg-mirage-100 p-8 dark:bg-black/20",
         "grid grid-cols-2 grid-rows-3 [grid-template-areas:'author_socialMedia'_'author_socialMedia'_'copy_copy';]",
         className,
       )}
     >
-      <section id="footer__author" className="flex flex-col gap-2 [grid-area:author;]">
-        <Link className="flex items-center gap-2" href={`mailto:${data.author.email}`}>
+      <section className="flex flex-col gap-2 [grid-area:author;]">
+        <Link
+          aria-label="Email Link"
+          className="flex items-center gap-2 hover:underline"
+          href={`mailto:${data.author.email?.replaceAll("**", "")}`}
+          target="_blank"
+        >
           <i>
             <MailIcon size={30} />
           </i>
-          {data.author.email}
+          <span className="text-cobalt-300">{formatText(`${data.author?.email}`)}</span>
         </Link>
-        {!data.author.wa!.show ? (
-          <Link
-            className="flex items-center gap-2"
-            href={`${
-              data.author.wa?.message
-                ? `https://wa.me/${data.author.phone?.replace(/[^\d]+/gm, "")}/text=${encodeURI(data.author.wa.message)}`
-                : `https://wa.me/${data.author.phone?.replace(/[^\d]+/gm, "")}/`
-            }`}
-          >
-            <i>
-              <MessageSquareMoreIcon size={30} />
-            </i>
-            {data.author?.phone}
-          </Link>
-        ) : (
-          <Paragraph className="flex">
-            <i>
-              <MessageSquareMoreIcon size={30} />
-            </i>
-            {data.author?.phone}
-          </Paragraph>
-        )}
+        <Link
+          className="flex w-max items-center gap-2 hover:underline"
+          href={`${
+            data.author.wa?.message
+              ? `https://wa.me/${data.author.phone?.replace(/[^\d]+/gm, "")}/text=${encodeURI(data.author.wa.message)}`
+              : `https://wa.me/${data.author.phone?.replace(/[^\d]+/gm, "")}/`
+          }`}
+          aria-label="Whatsapp Number Link"
+          target="_blank"
+        >
+          {!data.author.wa!.show ? (
+            <>
+              <i>
+                <MessageSquareMoreIcon size={30} />
+              </i>
+              <span className=" text-cobalt-300">{formatText(`${data.author?.phone}`)}</span>
+            </>
+          ) : (
+            <>
+              <i>
+                <MessageSquareMoreIcon size={30} />
+              </i>
+              <span className=" text-cobalt-300">{formatText(`${data.author?.phone}`)}</span>
+            </>
+          )}
+        </Link>
       </section>
       {data.socialMedias && (
-        <section id="footer__socialMedia" className="flex gap-8 [grid-area:socialMedia;]">
+        <section className="flex gap-8 [grid-area:socialMedia;]">
           <ul>
             {data.socialMedias.map((items) => {
               const { icon: Icon, anchor, tag } = items;
               return (
-                <Fragment key={anchor.concat(data.author.name)}>
-                  <Link href={anchor}>
-                    {Icon && Icon}
-                    <Paragraph>{tag}</Paragraph>
+                <Fragment key={tag.replace(" ", "-")}>
+                  <Link href={anchor} aria-label={`Social Link - ${tag}`} target="_blank">
+                    <i>{Icon && Icon}</i>
+                    <Paragraph className="text-cobalt-300">{tag}</Paragraph>
                   </Link>
                 </Fragment>
               );
@@ -86,11 +94,18 @@ export const FooterSection = ({ data, className }: FooterSectionProps) => {
           </ul>
         </section>
       )}
-      <section id="footer__copy" className="flex items-center justify-center gap-2 [grid-area:copy;]">
-        <span>{data.copy?.text}</span>
+      <section className="flex items-center justify-center gap-2 [grid-area:copy;]">
+        <span>
+          Created by <Link href={"https://github.com/frotas"}>{formatText(`${data.copy?.text}`)}</Link>
+        </span>
         {"-"}
-        <Link href={"https://github.com/Frotas/portfolio/blob/4f60386e54f54381f568167e187c1d0b9dd71742/LICENSE"}>
-          {data.copy?.license && data.copy?.license}
+        <Link
+          className="hover:underline"
+          href={"https://github.com/Frotas/portfolio/blob/4f60386e54f54381f568167e187c1d0b9dd71742/LICENSE"}
+          aria-label={`${data.copy?.license}`}
+          target="_blank"
+        >
+          {formatText(`${data.copy?.license && data.copy?.license}`)}
         </Link>
       </section>
     </footer>

@@ -2,9 +2,9 @@ import crypto from "node:crypto";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { LinkedinIcon } from "lucide-react";
 import Link from "next/link";
-import { DetailedHTMLProps, type HtmlHTMLAttributes, forwardRef } from "react";
+import { DetailedHTMLProps, type HtmlHTMLAttributes, forwardRef, useMemo } from "react";
 
-import { Avatar, AvatarFallback, AvatarImage, Button, Paragraph, Title } from "@app/components/ui";
+import { Avatar, AvatarFallback, AvatarImage, Button, Paragraph, Subtitle, Title } from "@app/components/ui";
 import { cn, formatText } from "@app/lib/utils";
 
 interface RootProps extends DetailedHTMLProps<HtmlHTMLAttributes<HTMLElement>, HTMLElement> {
@@ -19,13 +19,14 @@ interface RootProps extends DetailedHTMLProps<HtmlHTMLAttributes<HTMLElement>, H
 
 export const HeroSection = forwardRef<HTMLElement, RootProps>(({ className, data, ...props }, ref) => {
   return (
-    <section className={cn("flex w-80 flex-col justify-evenly md:w-fit", className)} {...props}>
+    <section className={cn("flex w-80 flex-col md:w-fit", className)} {...props}>
       <header>
         <Avatar className="m-[0_auto] h-[200px] w-[200px] font-semibold font-serif text-2xl">
-          <AvatarImage src={data?.avatar.link} />
+          <AvatarImage src={data?.avatar.link} alt="Imagem de Perfil - Gravatar" role="image" />
           <AvatarFallback>GS</AvatarFallback>
         </Avatar>
-        <Title className="mt-4 font-title">{data?.title}</Title>
+        <Subtitle>{data?.title.split(",")[0]},</Subtitle>
+        <Title className="text-lg">{data?.title.split(",")[1]}</Title>
       </header>
       <footer>
         <Paragraph>{formatText(data!.desc)}</Paragraph>
@@ -33,27 +34,35 @@ export const HeroSection = forwardRef<HTMLElement, RootProps>(({ className, data
           <Button
             variant={"outline"}
             size={"icon"}
-            className="bg-input font-semibold font-serif md:h-12 md:w-12 dark:text-black"
+            className="font-semibold font-serif md:h-12 md:w-12"
+            role="button"
             asChild
           >
-            <Link href={"https://linkedin.com/in/guilherme-af-sales"} aria-label="LinkedIn Profile Link" role="link">
+            <Link
+              href={"https://www.linkedin.com/in/guilherme-af-sales"}
+              aria-label="LinkedIn Profile Link"
+              role="link"
+              target="_blank"
+            >
               <LinkedinIcon className="h-4 w-4 stroke-1 md:h-8 md:w-8" aria-label="LinkedIn Icon" />
             </Link>
           </Button>
           <Button
             variant={"outline"}
             size={"icon"}
-            className="bg-input font-semibold font-serif md:h-12 md:w-12 dark:text-black"
+            className="font-semibold font-serif md:h-12 md:w-12"
+            role="button"
             asChild
           >
-            <Link href={"https://github.com/frotas"} aria-label="GitHub Profile Link" role="link">
+            <Link href={"https://www.github.com/frotas"} aria-label="GitHub Profile Link" role="link" target="_blank">
               <GitHubLogoIcon className="h-4 w-4 stroke-1 md:h-8 md:w-8" aria-label="GitHub Icon" />
             </Link>
           </Button>
           <Button
             variant={"default"}
             size={"default"}
-            className="w-full max-w-40 bg-bay-of-many-500 font-semibold font-serif text-white hover:bg-bay-of-many-600 md:h-12"
+            className="w-full max-w-40 font-semibold font-serif text-white md:h-12"
+            role="button"
             asChild
           >
             <Link
@@ -61,6 +70,7 @@ export const HeroSection = forwardRef<HTMLElement, RootProps>(({ className, data
               href={"mailto:gs.dev.oficial@gmail.com"}
               aria-label="Email Link"
               role="link"
+              target="_blank"
             >
               Entre em Contato
             </Link>
