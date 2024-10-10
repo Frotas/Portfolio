@@ -1,10 +1,11 @@
+import { FileTextIcon, LayersIcon, SquareStackIcon, UserIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { Fira_Code, Inter, Lato, Merriweather } from "next/font/google";
 
 import "./globals.css";
 import { FooterSection, LinkTree, Navigation } from "@app/components/home";
 import { ThemeProvider } from "@app/providers/theme-provider";
-import { FileTextIcon, LayersIcon, SquareStackIcon, UserIcon } from "lucide-react";
+
 const interFont = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const merriweatherFont = Merriweather({
   subsets: ["latin"],
@@ -58,7 +59,6 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
-
 
 const linkTree: LinkTree[] = [
   {

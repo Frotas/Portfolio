@@ -19,22 +19,20 @@ interface RootProps extends DetailedHTMLProps<HtmlHTMLAttributes<HTMLElement>, H
 
 export const HeroSection = forwardRef<HTMLElement, RootProps>(({ className, data, ...props }, ref) => {
   return (
-    <section className={cn("flex w-80 flex-col md:w-fit", className)} {...props}>
-      <header>
-        <Avatar className="m-[0_auto] h-[200px] w-[200px] font-semibold font-serif text-2xl">
-          <AvatarImage src={data?.avatar.link} alt="Imagem de Perfil - Gravatar" role="image" />
-          <AvatarFallback>GS</AvatarFallback>
-        </Avatar>
+    <section className={cn("flex flex-col gap-12 sm:flex-row md:w-fit md:flex-col", className)} {...props}>
+      <Avatar className="h-[200px] w-[200px] font-semibold font-serif text-2xl">
+        <AvatarImage src={data?.avatar.link} alt="Imagem de Perfil - Gravatar" role="image" />
+        <AvatarFallback>GS</AvatarFallback>
+      </Avatar>
+      <div className="flex flex-col items-center" role="contentinfo">
         <Subtitle>{data?.title.split(",")[0]},</Subtitle>
-        <Title className="text-lg">{data?.title.split(",")[1]}</Title>
-      </header>
-      <footer>
-        <Paragraph>{formatText(data!.desc)}</Paragraph>
-        <div className="mt-4 flex flex-row gap-2" role="group">
+        <Title>{data?.title.split(",")[1]}</Title>
+        <Paragraph className="mt-2 text-center">{formatText(data!.desc)}</Paragraph>
+        <section className="mt-8 flex w-fit flex-row gap-4" role="group">
           <Button
             variant={"outline"}
             size={"icon"}
-            className="font-semibold font-serif md:h-12 md:w-12"
+            className="aspect-square border-slate-500/15 font-semibold font-serif md:h-12 md:w-12"
             role="button"
             asChild
           >
@@ -50,7 +48,7 @@ export const HeroSection = forwardRef<HTMLElement, RootProps>(({ className, data
           <Button
             variant={"outline"}
             size={"icon"}
-            className="font-semibold font-serif md:h-12 md:w-12"
+            className="aspect-square border-slate-500/15 font-semibold font-serif md:h-12 md:w-12"
             role="button"
             asChild
           >
@@ -75,8 +73,8 @@ export const HeroSection = forwardRef<HTMLElement, RootProps>(({ className, data
               Entre em Contato
             </Link>
           </Button>
-        </div>
-      </footer>
+        </section>
+      </div>
     </section>
   );
 });

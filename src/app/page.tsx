@@ -1,9 +1,8 @@
 import crypto from "node:crypto";
-import { title } from "node:process";
-import { text } from "node:stream/consumers";
+import { AppWindowIcon, FileTextIcon, LayersIcon, ServerIcon, ShieldHalfIcon } from "lucide-react";
+
 import { AboutSection, HeroSection, ServiceList, ServicesSection } from "@app/components/home";
 import { cn } from "@app/lib/utils";
-import { AppWindowIcon, FileTextIcon, LayersIcon, ServerIcon, ShieldHalfIcon } from "lucide-react";
 
 const servicesList: ServiceList[] = [
   {
@@ -45,12 +44,12 @@ export default async function Home() {
       id="mainContent"
       className={cn(
         style.get("classMap"),
-        `md:my-20 md:grid md:grid-cols-2 md:grid-rows-2 md:gap-[8rem_0] md:py-2 md:[grid-template-areas:"hero_about"_"hero_about"_"services_services"]`,
+        `md:my-12 md:grid md:grid-cols-2 md:grid-rows-2 md:gap-[8rem_1.13rem] md:py-2 md:[grid-template-areas:"hero_about"_"hero_about"_"services_services"]`,
       )}
     >
       <HeroSection
         id="heroSection"
-        className="w-full [grid-area:hero]"
+        className="w-full items-center [grid-area:hero]"
         data={{
           title: `Olá, Sou o Guilherme!`,
           desc: "**Desenvolvedor Web Full Stack** com mais de 2 anos de experiência na criação de soluções web.",
