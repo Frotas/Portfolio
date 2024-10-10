@@ -30,6 +30,7 @@ type FooterSectionProps = {
 } & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 
 export const FooterSection = ({ data, className }: FooterSectionProps) => {
+  const encodedMessage = encodeURIComponent(data.author.wa?.message || "");
   return (
     <footer
       className={cn(
@@ -54,7 +55,7 @@ export const FooterSection = ({ data, className }: FooterSectionProps) => {
           className="flex w-max items-center gap-2 hover:underline"
           href={`${
             data.author.wa?.message
-              ? `https://wa.me/${data.author.phone?.replace(/[^\d]+/gm, "")}/text=${encodeURI(data.author.wa.message)}`
+              ? `https://wa.me/${data.author.phone?.replace(/[^\d]+/g, "")}?text=${encodedMessage}`
               : `https://wa.me/${data.author.phone?.replace(/[^\d]+/gm, "")}/`
           }`}
           aria-label="Whatsapp Number Link"
